@@ -10,13 +10,14 @@
     width: 18px; height: 18px; position: absolute; color: #cccccc; right: 35px; top: 318px;
   }
 }
-.login-button{ width: 320px; height: 20px; margin-bottom: 18px; padding: 14px 0px; border-radius: 25px; background-color: #f92626; text-align: center;
+.login-button{ width: 320px; height: 20px; margin-bottom: 18px; padding: 14px 0; border-radius: 25px; background-color: #f92626; text-align: center;
   span{
     font-size: 16px; color:#fff;
   }
 }
 .non-login {
-  height: 17px; margin: auto; left:54px; position: relative; font-family: NotoSans; font-size: 12px; letter-spacing: -0.3px; text-align: left; color: #222;
+  height: 17px; width: fit-content; margin: auto;
+  font-family: NotoSans; font-size: 12px; letter-spacing: -0.3px; text-align: left; color: #222;
   span.find-id{ width: 62px; margin: 0 12.5px 0 0;}
   span.find-password{ width: 73px; margin: 0 12.5px; }
   span.join{ width: 47px; margin: 1px 0 0 12.5px;}

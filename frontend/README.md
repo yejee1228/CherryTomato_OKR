@@ -2,6 +2,35 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+##개발환경설정
+
+1. 소스트리 사용하여 프로젝트 clone
+2. VSCode 설치
+3. VS확장프로그램 설치_왼쪽 하단 확장 버튼 클릭 (마켓플레이스)
+    1. Auto Import
+    2. Auto Close Tag
+    3. Auto Complete Tag
+    4. Auto Rename Tag
+    5. Live Server
+    6. Reactjs code snippets
+    7. Korean Language Pack for Visual Studio Code
+3. 파일 > 폴더열기.. > 프로젝트 폴더 선택
+4. frontend 디렉토리 우클릭 > 통합터미널에서 열기
+5. 하단에 열린 터미널에서 작업
+
+## Node download
+
+1. node -v 로 설치된 노드 유무 확인
+2. 노드가 없을 경우 https://nodejs.org/ko/download/ 에서 install
+3. npm install --global yarn ( yarn install )
+4. yarn --version (yarn 버전 확인 및 설치확인)
+5. module 추가
+    1. yarn add sass
+    2. yarn add react-router-dom
+6. yarn start
+7. localhost:3000으로 접속.
+
 ## Available Scripts
 
 In the project directory, you can run:
