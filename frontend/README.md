@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
-##개발환경설정
+## 개발환경설정
 
 1. 소스트리 사용하여 프로젝트 clone
 2. VSCode 설치
