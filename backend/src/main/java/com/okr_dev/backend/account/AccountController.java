@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AccountController {
     @Autowired AccountService accountService;
 
-    @GetMapping("/account/existid/{userid}")
-    public String existId(@PathVariable String userid){
-        return "true";//accountService.existId(userid);
+    @GetMapping("/account/existid/{email}")
+    public boolean existId(@PathVariable String email){
+        return accountService.existId(email);
     }
 
 }

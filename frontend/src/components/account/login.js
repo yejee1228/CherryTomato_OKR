@@ -5,6 +5,7 @@ import kakao from '../resource/image/kakao-talk.png';
 import google from '../resource/image/google.png';
 import {AiFillEyeInvisible, AiFillEye} from 'react-icons/ai'
 import { MdCancel } from "react-icons/md";
+import axios from 'axios'
 
 const Login = () => {
     const [inputs, setInputs] = useState({
@@ -35,7 +36,7 @@ const Login = () => {
         passWordType === 'password' ? setPassWordType('text') : setPassWordType('password')
 
     }
-    const doLogin = (e) => {
+    const doLogin = async() => {
         if(userEmail == '') {
             setEmailError('이메일 주소를 입력해주세요.')
             return;
@@ -49,12 +50,39 @@ const Login = () => {
             setPassWordError('비밀번호를 입력해주세요.')
             return;
         }
-
-        //api 다녀와서
-        //1. 존재하지 않는 이메일 주소
-        //2. 비밀번호 일치하지 않음.
-        //3. 로그인 가능횟수 초과
+        
+        let headers = {
+            'authorization': 'JWT fefege..',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+        axios.get(`http://localhost:8080/account/existid/`+userEmail, userEmail, headers)
+            .then(({data}) => {
+                if (!data.result) {
+                    setEmailError('존재하지 않는 이메일주소입니다.')
+                    return;
+                }else{
+                    setEmailError('')
+                    console.log('존재하는 이메일주소')
+                    /*axios.post(`http://localhost:8080/account/login/`+userEmail, userPassword, headers).then(
+                        ({data})=>{
+                            if(data.result == 'overCount') {
+                                setLoginError('로그인 가능횟수를 초과하였습니다.')
+                            }else if(data.result == 'fail') {
+                                setPassWordError('비밀번호가 일치하지 않습니다.')
+                            }else{
+                                //메인페이지 이동 (세션 추가)
+                            }
+                        }
+                    )*/
+                }
+            })
+            .catch(() => {
+                return;
+            })
     }
+
+
     return (
         <div className="login">
             <div className="logo">

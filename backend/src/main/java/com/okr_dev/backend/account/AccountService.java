@@ -4,5 +4,5 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface AccountService {
-    String existId(String userid);
+    Boolean existId(String email);
 }
