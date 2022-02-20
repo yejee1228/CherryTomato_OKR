@@ -9,10 +9,10 @@ import axios from 'axios'
 
 const Login = () => {
     const [inputs, setInputs] = useState({
-        userEmail: '',
-        userPassword: ''
+        email: '',
+        passwd: ''
     });
-    const { userEmail, userPassword } = inputs;
+    const { email, passwd } = inputs;
     const [passWordType, setPassWordType ] = useState('password');
     const [emailError, setEmailError] = useState('')
     const [passWordError, setPassWordError] = useState('')
@@ -37,16 +37,16 @@ const Login = () => {
 
     }
     const doLogin = async() => {
-        if(userEmail == '') {
+        setEmailError('')
+        setPassWordError('')
+        if(email == '') {
             setEmailError('이메일 주소를 입력해주세요.')
             return;
-        }else if(userEmail.indexOf('@') <= -1) {
+        }else if(email.indexOf('@') <= -1) {
             setEmailError('@를 포함한 이메일 주소를 입력해주세요.')
             return;
-        }else{
-            setEmailError('')
         }
-        if(userPassword == ''){
+        if(passwd == ''){
             setPassWordError('비밀번호를 입력해주세요.')
             return;
         }
@@ -56,25 +56,27 @@ const Login = () => {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
-        axios.get(`http://localhost:8080/account/existid/`+userEmail, userEmail, headers)
-            .then(({data}) => {
-                if (!data.result) {
+        axios.get(`http://localhost:8080/account/existid/`+email, email, headers)
+            .then((data) => {
+                if (!data.data) {
                     setEmailError('존재하지 않는 이메일주소입니다.')
                     return;
                 }else{
                     setEmailError('')
-                    console.log('존재하는 이메일주소')
-                    /*axios.post(`http://localhost:8080/account/login/`+userEmail, userPassword, headers).then(
-                        ({data})=>{
-                            if(data.result == 'overCount') {
+                    /*let param = JSON.stringify({'email':email, 'passwd': password})*/
+                    axios.post(`http://localhost:8080/account/login`, inputs, headers).then(
+                        (data1)=>{
+                            if(data1.data === 'wrongCount') {
                                 setLoginError('로그인 가능횟수를 초과하였습니다.')
-                            }else if(data.result == 'fail') {
+                            }else if(data1.data === 'wrongPasswd') {
                                 setPassWordError('비밀번호가 일치하지 않습니다.')
-                            }else{
+                            }else if(data1.data === 'success' ){
+                                alert('success')
                                 //메인페이지 이동 (세션 추가)
                             }
                         }
-                    )*/
+                    )
+                    return;
                 }
             })
             .catch(() => {
@@ -91,13 +93,13 @@ const Login = () => {
             </div>
             <div className="input-box">
                 <div>
-                    <input type="email" name="userEmail"  value = {userEmail} placeholder="이메일 주소" onChange={handleInput} ref={inputRef}
+                    <input type="email" name="email"  value = {email} placeholder="이메일 주소" onChange={handleInput} ref={inputRef}
                            style={emailError !== '' ? errorStyle : {}}/>
-                    <div onClick={()=>setInputs({...inputs, userEmail:''})}><MdCancel/></div>
+                    <div onClick={()=>setInputs({...inputs, email:''})}><MdCancel/></div>
                 </div>
                 {emailError !== '' && <span className="error">{emailError}</span>}
                 <div>
-                    <input className="input-pw" type={passWordType} name="userPassword"  value = {userPassword} placeholder="비밀번호" onChange={handleInput}
+                    <input className="input-pw" type={passWordType} name="passwd"  value = {passwd} placeholder="비밀번호" onChange={handleInput}
                            style={emailError !== '' ? errorStyle : {}}/>
                     {passWordType === "password" ? <div onClick={changePwType}><AiFillEyeInvisible/></div> : <div onClick={changePwType}><AiFillEye/></div>}
                 </div>

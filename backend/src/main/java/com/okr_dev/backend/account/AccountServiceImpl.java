@@ -11,4 +11,18 @@ public class AccountServiceImpl implements AccountService{
     public Boolean existId(String email) {
         return accountRepository.existsMemberByEmail(email);
     }
+
+    @Override
+    public String login(Member member) {
+        //비밀번호 암호화필요.
+        if(accountRepository.findWrongCountByEmail(member.getEmail())>=5){
+            return "wrongCount";
+        }
+        Member object = accountRepository.findByEmail(member.getEmail());
+        if(!object.getPasswd().equals(member.getPasswd())){
+            //wrong_count 증가필요.
+            return "wrongPasswd";
+        };
+        return "success";
+    }
 }
