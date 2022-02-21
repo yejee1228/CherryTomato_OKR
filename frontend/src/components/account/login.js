@@ -18,7 +18,7 @@ const Login = () => {
     const [passWordError, setPassWordError] = useState('')
     const [loginError, setLoginError] = useState('')
     const inputRef = useRef();
-    const errorStyle = {border: 'solid 1px #f00', 'background-color': '#ffe2e2'}
+    const errorStyle = {border: 'solid 1px #ff0000', backgroundColor: '#ffe2e2'}
 
     useEffect(()=>{
         inputRef.current.focus()
@@ -72,6 +72,9 @@ const Login = () => {
                                 setPassWordError('비밀번호가 일치하지 않습니다.')
                             }else if(data1.data === 'success' ){
                                 alert('success')
+                                setLoginError('')
+                                setPassWordError('')
+                                setEmailError('')
                                 //메인페이지 이동 (세션 추가)
                             }
                         }
@@ -83,7 +86,12 @@ const Login = () => {
                 return;
             })
     }
-
+    const kauth = () => {
+        alert("구현중")
+    }
+    const gauth = () => {
+        alert("구현중")
+    }
 
     return (
         <div className="login">
@@ -99,8 +107,8 @@ const Login = () => {
                 </div>
                 {emailError !== '' && <span className="error">{emailError}</span>}
                 <div>
-                    <input className="input-pw" type={passWordType} name="passwd"  value = {passwd} placeholder="비밀번호" onChange={handleInput}
-                           style={emailError !== '' ? errorStyle : {}}/>
+                    <input type={passWordType} name="passwd"  value = {passwd} placeholder="비밀번호" onChange={handleInput}
+                           style={passWordError !== '' ? errorStyle : {}}/>
                     {passWordType === "password" ? <div onClick={changePwType}><AiFillEyeInvisible/></div> : <div onClick={changePwType}><AiFillEye/></div>}
                 </div>
                 {passWordError !== '' && <span className="error">{passWordError}</span>}
@@ -115,11 +123,11 @@ const Login = () => {
                 <Link to="/account/join"><span className="join">회원가입</span></Link>
             </div>
             <div className="social-login">
-                <div className="kakao-login" onClick="">
+                <div className="kakao-login" onClick={kauth}>
                     <img src={kakao} alt=""/><br/>
                     <span>카카오<br/>로그인</span>
                 </div>
-                <div className="google-login" onClick="">
+                <div className="google-login" onClick={gauth}>
                     <img src={google} alt=""/><br/>
                     <span>구글<br/>로그인</span>
                 </div>

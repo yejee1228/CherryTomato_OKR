@@ -34,7 +34,7 @@ public class Member{
     @Column(name = "PROFILE_ATTACHKEY", length=10)  private String profileAttachkey;
     @Column(name = "SETTING1", length=10)  private String setting1;
     @Column(name = "SETTING2", length=10)  private String setting2;
-    @Column(name = "WRONG_COUNT", length=10)  private String wrongCount;
+    @Column(name = "WRONG_COUNT", length=10)  private int wrongCount;
 
 }
 

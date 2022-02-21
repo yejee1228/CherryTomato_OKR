@@ -20,7 +20,8 @@ public class AccountServiceImpl implements AccountService{
         }
         Member object = accountRepository.findByEmail(member.getEmail());
         if(!object.getPasswd().equals(member.getPasswd())){
-            //wrong_count 증가필요.
+            object.setWrongCount(object.getWrongCount()+1);
+            accountRepository.save(object);
             return "wrongPasswd";
         };
         return "success";
