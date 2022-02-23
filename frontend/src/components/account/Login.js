@@ -118,8 +118,8 @@ const Login = () => {
             </div>
             {loginError !== '' && <span className="error">{loginError}</span>}
             <div className="non-login">
-                <Link to="/account/findid"><span className="find-id">아이디찾기</span></Link> <span className="vertical">&#124;</span>
-                <Link to="/account/findid"><span className="find-password">비밀번호찾기</span></Link> <span className="vertical">&#124;</span>
+                <Link to="/account/account"><span className="find-id">아이디찾기</span></Link> <span className="vertical">&#124;</span>
+                <Link to="/account/account"><span className="find-password">비밀번호찾기</span></Link> <span className="vertical">&#124;</span>
                 <Link to="/account/join"><span className="join">회원가입</span></Link>
             </div>
             <div className="social-login">
