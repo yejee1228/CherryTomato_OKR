@@ -12,8 +12,8 @@ const account = () => {
                 <span className="title">이메일 찾기</span>
             </div>
             <div className="contents">
-                {/*<FindId/>*/}
-                <ReturnId/>
+                <FindId/>
+                {/*<ReturnId/>*/}
             </div>
         </>
     );
