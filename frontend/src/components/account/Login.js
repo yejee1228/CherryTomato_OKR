@@ -86,12 +86,12 @@ const Login = () => {
                 return;
             })
     }
-    const kauth = () => {
+  /*  const kauth = () => {
         alert("구현중")
     }
     const gauth = () => {
         alert("구현중")
-    }
+    }*/
 
     return (
         <div className="login">
@@ -118,11 +118,11 @@ const Login = () => {
             </div>
             {loginError !== '' && <span className="error">{loginError}</span>}
             <div className="non-login">
-                <Link to="/account/account"><span className="find-id">아이디찾기</span></Link> <span className="vertical">&#124;</span>
-                <Link to="/account/account"><span className="find-password">비밀번호찾기</span></Link> <span className="vertical">&#124;</span>
-                <Link to="/account/join"><span className="join">회원가입</span></Link>
+                <Link to="/account" contents="FindId"><span className="find-id">아이디찾기</span></Link> <span className="vertical">&#124;</span>
+                <Link to="/account" contents="FindPassword"><span className="find-password">비밀번호찾기</span></Link> <span className="vertical">&#124;</span>
+                <Link to="/signup"><span className="join">회원가입</span></Link>
             </div>
-            <div className="social-login">
+            {/*<div className="social-login">
                 <div className="kakao-login" onClick={kauth}>
                     <img src={kakao} alt=""/><br/>
                     <span>카카오<br/>로그인</span>
@@ -131,7 +131,7 @@ const Login = () => {
                     <img src={google} alt=""/><br/>
                     <span>구글<br/>로그인</span>
                 </div>
-            </div>
+            </div>*/}
         </div>
     );
 };

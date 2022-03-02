@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Timer from './Timer'
 
 const FindId = () => {
     const [inputs, setInputs] = useState({
@@ -54,7 +55,7 @@ const FindId = () => {
                 <input type="text" placeholder="휴대폰번호('-'제외)" name={phone}/>
                 <button className="btn-transAuth" onClick={transSms}>{transNum === false ? '인증번호 전송' : '재전송'} </button>
                 <input className="auth-number" type="text" name={authCode} placeholder="인증코드를 입력해 주세요."/>
-                <span className="auth-time">01:58</span>
+                <Timer/>
                 <button className="btn-auth" onClick={doAuth}>인증하기</button>
                 <div className="alert-box">
                     {

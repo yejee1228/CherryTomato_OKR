@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Join = () => {
+const Main = () => {
     return (
         <div>
-            회원가입
+            Hello, CherryTomato!
         </div>
     );
 };
 
-export default Join;
+export default Main;
