@@ -12,5 +12,6 @@ public interface AccountRepository extends CrudRepository<Member,Long> {
     Member findByEmail(String email);
     @Query(value = "SELECT wrong_count FROM member WHERE email = ?", nativeQuery = true)
     int findWrongCountByEmail(String email);
+    Boolean existsMemberByPhone(String phone);
 
 }

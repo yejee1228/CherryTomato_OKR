@@ -26,4 +26,7 @@ public class AccountServiceImpl implements AccountService{
         };
         return "success";
     }
+
+    @Override
+    public Boolean existPhone(String phone) { return accountRepository.existsMemberByPhone(phone);}
 }

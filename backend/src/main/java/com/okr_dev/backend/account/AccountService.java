@@ -6,4 +6,5 @@ import org.springframework.stereotype.Component;
 public interface AccountService {
     Boolean existId(String email);
     String login(Member member);
+    Boolean existPhone(String phone);
 }

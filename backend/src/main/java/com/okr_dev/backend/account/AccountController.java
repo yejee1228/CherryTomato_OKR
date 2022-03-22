@@ -23,4 +23,9 @@ public class AccountController {
         return accountService.login(member);
     }
 
+    @GetMapping("/account/existphone/{phone}")
+    public boolean existPhone(@PathVariable String phone){
+        return accountService.existPhone(phone);
+    }
+
 }
