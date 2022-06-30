@@ -12,7 +12,7 @@ const App = () => {
                 <Route path="/" element={<Main/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/signup" element={<Join/>} />
-                <Route path="/account" element={<FindAccount/>}/>
+                <Route path="/account" element={<FindAccount/>} flag={'findPw'}/>
             </Routes>
         </BrowserRouter>
     );
