@@ -8,6 +8,7 @@ import {
     LoginItem,
     ContentInput,
     CancelIcon,
+    EyeIcon,
     Error,
     LoginButton,
     LoginSpan,
@@ -15,7 +16,7 @@ import {
     FindId,
     FindPassword,
     Join
-} from '../../../lib/styles/account/login/style'
+} from '../../../components/account/login'
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 import { MdCancel } from "react-icons/md";
 import axios from 'axios'
@@ -115,7 +116,7 @@ const Login = () => {
                 <LoginItem>
                     <ContentInput type={passWordType} name="passwd" value={passwd} placeholder="비밀번호" onChange={handleInput}
                         style={passWordError !== '' ? errorStyle : {}} />
-                    {passWordType === "password" ? <div onClick={changePwType}><AiFillEyeInvisible /></div> : <div onClick={changePwType}><AiFillEye /></div>}
+                    {passWordType === "password" ? <EyeIcon onClick={changePwType}><AiFillEyeInvisible /></EyeIcon> : <EyeIcon onClick={changePwType}><AiFillEye /></EyeIcon>}
                 </LoginItem>
                 {passWordError !== '' && <Error>{passWordError}</Error>}
             </LoginContent>
@@ -124,9 +125,9 @@ const Login = () => {
             </LoginButton>
             {loginError !== '' && <Error>{loginError}</Error>}
             <NonLoginWrap>
-                <Link href="/account/:FindId"><FindId>아이디찾기</FindId></Link> <span className="vertical">&#124;</span>
-                <Link href="/account/:FindPassword"><FindPassword>비밀번호찾기</FindPassword></Link> <span className="vertical">&#124;</span>
-                <Link href="/signup"><Join>회원가입</Join></Link>
+                <Link href="/account/findId"><a><FindId>아이디찾기</FindId></a></Link> <span className="vertical">&#124;</span>
+                <Link href="/account/findPassword"><a><FindPassword>비밀번호찾기</FindPassword></a></Link> <span className="vertical">&#124;</span>
+                <Link href="/join"><a><Join>회원가입</Join></a></Link>
             </NonLoginWrap>
         </LoginWrap>
     );

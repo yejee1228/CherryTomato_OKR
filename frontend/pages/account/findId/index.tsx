@@ -1,6 +1,12 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
+import {
+  AlertBox, AlertText, AuthButton, AuthNumberInput, AuthTime,
+  ContentWrap, Input, InputWrap, RedButton, RedButtonSpan, SubTitle, SubtitleBox,
+  SubTitleComment, TransAuthButton,
+} from '../../../components/account/findAccount'
+import Header from '../../../components/index'
 
 const useCounter = (initialValue, ms) => {
   const [count, setCount] = useState(initialValue);
@@ -35,7 +41,7 @@ const FindId = (url, config) => {
   const { memberName, phone } = inputs;
   const [authCode, setAuthcode] = useState('');
   const [transNum, setTransNum] = useState(false);
-  const [phoneErrorMsg, setPhoneErrorMsg] = useState('');
+  const [phoneErrorMsg, setPhoneErrorMsg] = useState('가입 당시 입력한 휴대전화 번호을 입력하세요.');
   const [errorMsg, setErrorMsg] = useState('');
   const [message, setMessage] = useState('');
   const [currentMinutes, setCurrentMinutes] = useState(3);
@@ -88,12 +94,7 @@ const FindId = (url, config) => {
   };
 
   const existPhone = async () => {
-    let headers = {
-      authorization: 'JWT fefege..',
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    };
-    axios.get(`/account/existphone/${phone}`, phone, headers).then((data) => {
+    axios.get(`/account/existphone/${phone}`).then((data) => {
       if (!data.data) {
         return false;
       } else {
@@ -126,52 +127,57 @@ const FindId = (url, config) => {
   };
   return (
     <>
-      <div className="subtitle-box">
-        <p className="subtitle">휴대폰 인증</p>
-        {phoneErrorMsg != '' && (
-          <p className="subtitle-comment"> {phoneErrorMsg} </p>
-        )}
-      </div>
-      <div className="input-box">
-        <input
-          type="text"
-          placeholder="성명"
-          name="memberName"
-          value={memberName}
-          onChange={handleInput}
-        />
-        <input
-          type="text"
-          placeholder="휴대폰번호('-'제외)"
-          name="phone"
-          value={phone}
-          onChange={handleInput}
-        />
-        <button className="btn-transAuth" onClick={transSms}>
-          {transNum === false ? '인증번호 전송' : '재전송'}{' '}
-        </button>
-        <input
-          className="auth-number"
-          type="text"
-          name={authCode}
-          placeholder="인증코드를 입력해 주세요."
-        />
-        <span className="auth-time">
-          {currentMinutes < 10 ? `0${currentMinutes}` : currentMinutes}:
-          {currentSeconds < 10 ? `0${currentSeconds}` : currentSeconds}
-        </span>
-        <button className="btn-auth" onClick={doAuth}>
-          인증하기
-        </button>
-        <div className="alert-box">
-          {errorMsg != '' && <p className="error">{errorMsg}</p>}
-          {message != '' && <p className="success">{message}</p>}
-        </div>
-      </div>
-      <div className="btn-find" onClick={findId}>
-        <Link to="/returnId"></Link>
-        <span>아이디 찾기</span>
-      </div>
+      <Header contents={'findId'} />
+      <ContentWrap>
+        <SubtitleBox>
+          <SubTitle>휴대폰 인증</SubTitle>
+          {phoneErrorMsg != '' && (
+            <SubTitleComment> {phoneErrorMsg} </SubTitleComment>
+          )}
+        </SubtitleBox>
+        <InputWrap>
+          <Input
+            type="text"
+            placeholder="성명"
+            name="memberName"
+            value={memberName}
+            onChange={handleInput}
+          />
+          <Input
+            type="text"
+            placeholder="휴대폰번호('-'제외)"
+            name="phone"
+            value={phone}
+            onChange={handleInput}
+          />
+          <TransAuthButton onClick={transSms}>
+            {transNum === false ? '인증번호 전송' : '재전송'}{' '}
+          </TransAuthButton>
+          <AuthNumberInput
+            type="text"
+            name={authCode}
+            placeholder="인증코드를 입력해 주세요."
+          />
+          <AuthTime>
+            {currentMinutes < 10 ? `0${currentMinutes}` : currentMinutes}:
+            {currentSeconds < 10 ? `0${currentSeconds}` : currentSeconds}
+          </AuthTime>
+          <AuthButton onClick={doAuth}>
+            인증하기
+          </AuthButton>
+          <AlertBox>
+            {errorMsg != '' && <AlertText AlertType='error'>{errorMsg}</AlertText>}
+            {message != '' && <AlertText AlertType='success'>{message}</AlertText>}
+          </AlertBox>
+        </InputWrap>
+        <RedButton onClick={findId}>
+          <Link href="/account/findAccount/findId/returnId">
+            <a>
+              <RedButtonSpan>아이디 찾기</RedButtonSpan>
+            </a>
+          </Link>
+        </RedButton>
+      </ContentWrap>
     </>
   );
 };
