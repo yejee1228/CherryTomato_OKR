@@ -48,7 +48,7 @@ const index = () => {
 
   return (
     <>
-      <Header contents='signup' />
+      <Header contents='signup_admin' />
       <SignupWrap>
         <InputBox>
           <Input type="email" name="email" value={email} placeholder="이메일 주소" onChange={handleInput} ref={inputRef}
