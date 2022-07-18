@@ -1,6 +1,7 @@
+/*eslint no-undef: "error"*/
+/*eslint-env node*/
 import path from 'path';
 const __dirname = path.resolve();
-// eslint-disable-next-line no-undef
 module.exports = {
   entry: './pages/_app.tsx',
   output: {
