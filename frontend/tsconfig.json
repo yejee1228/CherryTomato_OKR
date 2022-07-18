@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es5" /* 컴파일할 ECMAScript 버전: 'ES3'(기본), 'ES2015', 'ES2016'... */,
+    "target": "ES6" /* 컴파일할 ECMAScript 버전: 'ES3'(기본), 'ES2015', 'ES2016'... */,
     "lib": [
       /* 컴파일 과정에서 사용될 라이브러리 파일 */ "dom",
       "dom.iterable",
       "esnext"
     ],
-    "baseUrl": "./src" /* 절대경로 모듈이 아닌, 모듈이 위치한 기준 디렉토리 */,
+    "baseUrl": "./" /* 절대경로 모듈이 아닌, 모듈이 위치한 기준 디렉토리 */,
     "paths": {
       /* baseUrl 기준으로 불러올 모듈의 위치를 재지정하는 엔트리 */
-      "@": ["src/*"]
+      "@": ["pages/*"],
+      "@compnent": ["components/*"]
     },
     "typeRoots": [
       /* 타입정의를 포함할 폴더목록, '/node_modules/@types/' 는 기본 포함됨 */
@@ -35,9 +36,7 @@
   "include": [
     /* include: 컴파일에 포함할 디렉토리/파일 경로 */ "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "pages/account/findAccount/index.txs",
-    "pages/account/findAccount/findPassword/changePassword"
+    "**/*.tsx"
   ],
   "exclude": [/* exclude: 컴파일에 제외할 디렉토리/파일 경로 */ "node_modules"]
 }
