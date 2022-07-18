@@ -1,13 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
-import Header from '../../../../components'
+import { Header } from 'components'
 import { AiOutlineRight } from "react-icons/ai";
 import {
     ContentWrap, SubTitleBox, ReturnComment, ReturnBox, ReturnText,
     RedButton, LinkBox, RedButtonSpan, LinkSpan,
-} from '../../../../components/account/findAccount'
+} from 'components/account/findAccount'
 
-const ReturnId = () => {
+const index = () => {
     return (
         <>
             <Header contents={'findId'} />
@@ -33,4 +33,4 @@ const ReturnId = () => {
     );
 };
 
-export default ReturnId;
+export default index;
