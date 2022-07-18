@@ -104,7 +104,7 @@ width: 73px;
 margin: 0 12.5px;
 `
 
-export const Join = styled.span`
+export const Signup = styled.span`
 width: 47px;
 margin: 1px 0 0 12.5px;
 `

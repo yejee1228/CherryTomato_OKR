@@ -1,33 +1,24 @@
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import {
-    LoginWrap,
-    LogoWrap,
-    LogoSpan,
-    LoginContent,
-    LoginItem,
-    ContentInput,
-    CancelIcon,
-    EyeIcon,
-    Error,
-    LoginButton,
-    LoginSpan,
-    NonLoginWrap,
-    FindId,
-    FindPassword,
-    Join
-} from '../../../components/account/login'
+    LoginWrap, LogoWrap, LogoSpan, LoginContent,
+    LoginItem, ContentInput, CancelIcon, EyeIcon,
+    Error, LoginButton, LoginSpan, NonLoginWrap,
+    FindId, FindPassword, Signup
+} from 'components/account/login'
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 import { MdCancel } from "react-icons/md";
 import axios from 'axios'
+import { useRouter } from 'next/router';
 
-const Login = () => {
+const index = () => {
+    const router = useRouter()
     const [inputs, setInputs] = useState({
         email: '',
-        passwd: ''
-    });
-    const { email, passwd } = inputs;
-    const [passWordType, setPassWordType] = useState('password');
+        password: ''
+    })
+    const { email, password } = inputs
+    const [passWordType, setPassWordType] = useState('password')
     const [emailError, setEmailError] = useState('')
     const [passWordError, setPassWordError] = useState('')
     const [loginError, setLoginError] = useState('')
@@ -38,7 +29,7 @@ const Login = () => {
         inputRef.current.focus()
     }, [])
     const handleInput = (e) => {
-        const { value, name } = e.target;
+        const { value, name } = e.target
 
         setInputs({
             ...inputs,
@@ -60,7 +51,7 @@ const Login = () => {
             setEmailError('@를 포함한 이메일 주소를 입력해주세요.')
             return;
         }
-        if (passwd == '') {
+        if (password == '') {
             setPassWordError('비밀번호를 입력해주세요.')
             return;
         }
@@ -74,7 +65,7 @@ const Login = () => {
             .then((data) => {
                 if (!data.data) {
                     setEmailError('존재하지 않는 이메일주소입니다.')
-                    return;
+                    return
                 } else {
                     setEmailError('')
                     axios.post(`http://localhost:8080/account/login`, inputs, headers).then(
@@ -88,15 +79,15 @@ const Login = () => {
                                 setLoginError('')
                                 setPassWordError('')
                                 setEmailError('')
-                                //메인페이지 이동 (세션 추가)
+                                router.push('/main')
                             }
                         }
                     )
-                    return;
+                    return
                 }
             })
             .catch(() => {
-                return;
+                return
             })
     }
 
@@ -114,7 +105,7 @@ const Login = () => {
                 </LoginItem>
                 {emailError !== '' && <Error>{emailError}</Error>}
                 <LoginItem>
-                    <ContentInput type={passWordType} name="passwd" value={passwd} placeholder="비밀번호" onChange={handleInput}
+                    <ContentInput type={passWordType} name="passwd" value={password} placeholder="비밀번호" onChange={handleInput}
                         style={passWordError !== '' ? errorStyle : {}} />
                     {passWordType === "password" ? <EyeIcon onClick={changePwType}><AiFillEyeInvisible /></EyeIcon> : <EyeIcon onClick={changePwType}><AiFillEye /></EyeIcon>}
                 </LoginItem>
@@ -127,10 +118,10 @@ const Login = () => {
             <NonLoginWrap>
                 <Link href="/account/findId"><a><FindId>아이디찾기</FindId></a></Link> <span className="vertical">&#124;</span>
                 <Link href="/account/findPassword"><a><FindPassword>비밀번호찾기</FindPassword></a></Link> <span className="vertical">&#124;</span>
-                <Link href="/join"><a><Join>회원가입</Join></a></Link>
+                <Link href="/account/signup"><a><Signup>회원가입</Signup></a></Link>
             </NonLoginWrap>
         </LoginWrap>
     );
 };
 
-export default Login;
+export default index;

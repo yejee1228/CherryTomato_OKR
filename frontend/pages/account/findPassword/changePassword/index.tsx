@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
-import Header from '../../../../components'
-import { ContentWrap, EyeIcon, Input, InputBox, InputWrap, RedButton, RedButtonSpan, SubTitleBox, SubTitleCommentRed } from '../../../../components/account/findAccount'
+import { Header } from 'components'
+import { ContentWrap, RedButton, RedButtonSpan, SubTitleBox, SubTitleCommentRed } from 'components/account/findAccount'
+import { EyeIcon, Input, InputBox, InputWrap, } from 'components/common'
 
-const ChangePassword = () => {
+const index = () => {
     const [passWordType, setPassWordType] = useState('password')
     const [passwd, setPasswd] = useState('')
     const [checkPasswd, setCheckPasswd] = useState('')
@@ -45,4 +46,4 @@ const ChangePassword = () => {
     );
 };
 
-export default ChangePassword;
+export default index;
