@@ -23,14 +23,16 @@ module.exports = {
       jsx: true, // 리액트의 JSX 파싱을 위해서
     },
   },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
+  plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks'],
   rules: {
     '@typescript-eslint/semi': 'off',
     '@typescript-eslint/space-before-function-paren': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
   settings: {
     react: {
       version: 'detect', // eslint-plugin-react가 자동 리액트버전탐지
     },
   },
-};
+}
