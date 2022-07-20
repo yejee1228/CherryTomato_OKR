@@ -1,17 +1,16 @@
 import { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
 import {
     LoginWrap, LogoWrap, LogoSpan, LoginContent,
-    LoginItem, ContentInput, CancelIcon, EyeIcon,
     Error, LoginButton, LoginSpan, NonLoginWrap,
-    FindId, FindPassword, Signup
+    FindId, FindPassword, Signup, Vertical
 } from 'components/account/login'
+import { InputBox, Input, InputIcon } from 'components/account'
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
-import { MdCancel } from "react-icons/md";
+import { MdCancel } from 'react-icons/md';
 import axios from 'axios'
 import { useRouter } from 'next/router';
 
-const index = () => {
+const Index = () => {
     const router = useRouter()
     const [inputs, setInputs] = useState({
         email: '',
@@ -98,17 +97,19 @@ const index = () => {
                 <LogoSpan>Cherry Tomato</LogoSpan>
             </LogoWrap>
             <LoginContent>
-                <LoginItem>
-                    <ContentInput type="email" name="email" value={email} placeholder="이메일 주소" onChange={handleInput} ref={inputRef}
-                        style={emailError !== '' ? errorStyle : {}} />
-                    <CancelIcon onClick={() => setInputs({ ...inputs, email: '' })}><MdCancel /></CancelIcon>
-                </LoginItem>
+                <InputBox>
+                    <Input type='email' name='email' value={email} placeholder='이메일 주소' onChange={handleInput} ref={inputRef} style={emailError !== '' ? errorStyle : {}} />
+                    <InputIcon onClick={() => setInputs({ ...inputs, email: '' })}><MdCancel /></InputIcon>
+                </InputBox>
                 {emailError !== '' && <Error>{emailError}</Error>}
-                <LoginItem>
-                    <ContentInput type={passWordType} name="passwd" value={password} placeholder="비밀번호" onChange={handleInput}
-                        style={passWordError !== '' ? errorStyle : {}} />
-                    {passWordType === "password" ? <EyeIcon onClick={changePwType}><AiFillEyeInvisible /></EyeIcon> : <EyeIcon onClick={changePwType}><AiFillEye /></EyeIcon>}
-                </LoginItem>
+                <InputBox>
+                    <Input type={passWordType} name='passwd' value={password} placeholder='비밀번호' onChange={handleInput} style={passWordError !== '' ? errorStyle : {}} />
+                    {
+                        passWordType === 'password'
+                            ? <InputIcon onClick={changePwType}><AiFillEyeInvisible /></InputIcon>
+                            : <InputIcon onClick={changePwType}><AiFillEye /></InputIcon>
+                    }
+                </InputBox>
                 {passWordError !== '' && <Error>{passWordError}</Error>}
             </LoginContent>
             <LoginButton onClick={doLogin}>
@@ -116,12 +117,12 @@ const index = () => {
             </LoginButton>
             {loginError !== '' && <Error>{loginError}</Error>}
             <NonLoginWrap>
-                <Link href="/account/findId"><a><FindId>아이디찾기</FindId></a></Link> <span className="vertical">&#124;</span>
-                <Link href="/account/findPassword"><a><FindPassword>비밀번호찾기</FindPassword></a></Link> <span className="vertical">&#124;</span>
-                <Link href="/account/signup"><a><Signup>회원가입</Signup></a></Link>
+                <div onClick={() => router.push('/account/findId')}><a><FindId>아이디찾기</FindId></a></div> <Vertical >&#124;</Vertical>
+                <div onClick={() => router.push('/account/findPassword')}><a><FindPassword>비밀번호찾기</FindPassword></a></div> <Vertical >&#124;</Vertical>
+                <div onClick={() => router.push('/account/signup')}><a><Signup>회원가입</Signup></a></div>
             </NonLoginWrap>
         </LoginWrap>
     );
 };
 
-export default index;
+export default Index;

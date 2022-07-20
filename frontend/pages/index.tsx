@@ -1,7 +1,6 @@
-import React from 'react';
 import Login from "./account/login/index"
 
-const index = () => {
+const Index = () => {
     return (
         <>
             <Login />
@@ -9,4 +8,4 @@ const index = () => {
     );
 };
 
-export default index;
+export default Index;

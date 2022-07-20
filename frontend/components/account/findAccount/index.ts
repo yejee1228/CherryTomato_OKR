@@ -7,25 +7,6 @@ position:absolute;
 left: 50%; 
 transform: translateX(-50%);
 `
-export const SubTitleBox = styled.div`
-`
-export const SubTitle = styled.p`
-margin-bottom:4px;
-font-family: NotoSans;
-font-size: 18px;
-font-weight: bold;
-line-height: 1.33;
-letter-spacing: -0.45px;
-color: #222;
-`
-export const SubTitleComment = styled.span`
-font-family: NotoSans;
-font-size: 15px;
-font-weight: bold;
-line-height: 1.33;
-letter-spacing: -0.38px;
-color: #222;
-`
 export const SubTitleCommentRed = styled.span`
 font-family: NotoSans;
 font-size: 12px;
@@ -69,24 +50,6 @@ line-height: 1.38;
 letter-spacing: -0.33px;
 color: #787878;
 `
-export const AlertBox = styled.div`
-text-align: left;
-width:320px;
-padding: 0 4px;
-`
-export const RedButton = styled.div`
-width: 320px;
-height: 48px;
-margin-bottom: 18px;
-padding: 14px 0;
-border-radius: 25px;
-background-color: #f92626;
-text-align: center;
-`
-export const RedButtonSpan = styled.span`
-color: #ffffff;
-font-size: 16px;
-`
 export const ReturnComment = styled.p`
 font-size: 15px;
 font-weight: bold;
@@ -108,25 +71,6 @@ font-family: NotoSans;
 font-size: 15px;
 letter-spacing: -0.38px;
 color: #222;
-`
-export const LinkBox = styled.div`
-height: 17px;
-margin: 4px;
-font-family: NotoSans;
-font-size: 12px;
-letter-spacing: -0.3px;
-color: #222;
-`
-export const GreenSpan = styled.span`
-color:#39a114;
-`
-export const LinkSpan = styled.span`
-font-family: NotoSans;
-font-size: 12px;
-line-height: 1.42;
-letter-spacing: -0.3px;
-text-align: left;
-color: #707070;
 `
 export const LayerBackground = styled.div`
 width: 100%;

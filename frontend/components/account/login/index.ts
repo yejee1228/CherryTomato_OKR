@@ -6,12 +6,10 @@ padding: 187px 0px 137px;
 position: absolute;
 left: 50%;
 transform: translateX(-50%);
-`;
-
+`
 export const LogoWrap = styled.div`
 text-align: center
 `
-
 export const LogoSpan = styled.span`
 width: 100%;
 height: 33px;
@@ -24,50 +22,16 @@ line-height: 1.38;
 letter-spacing: -0.6px;
 color: #f92626;
 `
-
 export const LoginContent = styled.div`
-margin-top: 18px;
-margin-bottom: 20px;
+margin-top: 24px;
+margin-bottom: 16px;
 `
-
-export const LoginItem = styled.div`
-position: relative;
-`
-
-export const ContentInput = styled.input`
-width: 320px;
-height: 48px;
-margin: 6px 0 4px;
-padding: 15px 12px;
-border-radius: 6px;
-border: solid 1px #ababab;
-`
-
 export const Error = styled.span`
 font-family: NotoSans;
 font-size: 12px;
 color: #ff0000;
 margin: 4px 24px 0 4px;
 `
-
-export const CancelIcon = styled.div`
-width: 18px;
-height: 18px;
-position: absolute;
-color: #cccccc;
-right: 12px;
-top: 21px;
-`
-
-export const EyeIcon = styled.div`
-width: 18px;
-height: 18px;
-position: absolute;
-color: #cccccc;
-right: 12px;
-top: 21px;
-`
-
 export const LoginButton = styled.div`
 width: 320px;
 height: 48px;
@@ -77,12 +41,10 @@ border-radius: 25px;
 background-color: #f92626;
 text-align: center;
 `
-
 export const LoginSpan = styled.span`
 font-size: 16px;
 color: #fff;
 `
-
 export const NonLoginWrap = styled.div`
 height: 17px;
 width: fit-content;
@@ -93,22 +55,18 @@ letter-spacing: -0.3px;
 text-align: left;
 color: #222;
 `
-
 export const FindId = styled.span`
 width: 62px;
 margin: 0 12.5px 0 0;
 `
-
 export const FindPassword = styled.span`
 width: 73px;
 margin: 0 12.5px;
 `
-
 export const Signup = styled.span`
 width: 47px;
 margin: 1px 0 0 12.5px;
 `
-
 export const Vertical = styled.span`
 margin: 0 12.5px;
 position: relative;
