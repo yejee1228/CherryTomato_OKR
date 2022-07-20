@@ -1,21 +1,19 @@
 import axios from 'axios';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React, { useEffect, useRef, useState } from 'react';
-import { AiOutlineRight } from "react-icons/ai";
+import { AiOutlineRight } from 'react-icons/ai';
 import { Header } from 'components';
-import { ContentWrap, RedButton, GreenSpan, LinkBox, ReturnComment, SubTitleBox, RedButtonSpan, LayerBackground, LayerPopup, LayerContent, LayerButton, LayerButtonSpan }
-    from 'components/account/findAccount';
-import { Input, InputWrap, AlertText } from 'components/common'
+import * as F from 'components/account/findAccount';
+import * as A from 'components/account'
+import { useRouter } from 'next/router';
 
-const index = () => {
-    const router = useRouter();
-    const [email, setEmail] = useState('');
+const Index = () => {
+    const router = useRouter()
+    const [email, setEmail] = useState('')
     const [error, setError] = useState('')
     const [authError, setAuthError] = useState(false)
-    const inputRef = useRef<HTMLInputElement>(null);
-    const handleInput = (e) => {
-        const { value } = e.target;
+    const inputRef = useRef<HTMLInputElement>(null)
+    const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = e.target
         setEmail(value);
     }
 
@@ -49,28 +47,28 @@ const index = () => {
     }
     return (
         <>
-            <Header contents="findPassword" />
+            <Header contents='findPassword' />
             <ContentWrap>
-                <SubTitleBox>
+                <A.SubTitleBox>
                     <ReturnComment>가입하신 이메일을 입력 후<br />
                         하단의 본인인증 버튼을 누르시면<br />
                         비밀번호를 재설정할 수 있습니다.
                     </ReturnComment>
-                </SubTitleBox>
-                <InputWrap style={{ margin: '40px 0 24px' }}>
-                    <Input type="email" name="email" placeholder='이메일 주소' value={email} ref={inputRef} onChange={handleInput} />
-                    {error !== '' && <AlertText style={{ marginTop: '1px', textAlign: 'left' }} AlertType='error'>{error}</AlertText>}
-                </InputWrap>
-                <RedButton onClick={authCheck}>
-                    <RedButtonSpan>본인인증</RedButtonSpan>
-                </RedButton>
-                <Link href="/account/findId">
+                </A.SubTitleBox>
+                <A.InputWrap style={{ margin: '40px 0 24px' }}>
+                    <A.Input type='email' name='email' placeholder='이메일 주소' value={email} ref={inputRef} onChange={handleInput} />
+                    {error !== '' && <A.AlertText style={{ marginTop: '1px', textAlign: 'left' }} AlertType='error'>{error}</A.AlertText>}
+                </A.InputWrap>
+                <A.RedButton onClick={authCheck}>
+                    <A.RedButtonSpan>본인인증</A.RedButtonSpan>
+                </A.RedButton>
+                <div onClick={() => router.push('/account/findId')}>
                     <a>
-                        <LinkBox>
-                            <GreenSpan>가입하신 이메일</GreenSpan>을 잊으셨나요? <AiOutlineRight />
-                        </LinkBox>
+                        <A.LinkBox>
+                            <A.GreenSpan>가입하신 이메일</A.GreenSpan>을 잊으셨나요? <AiOutlineRight />
+                        </A.LinkBox>
                     </a>
-                </Link>
+                </div>
             </ContentWrap>
             {
                 authError &&
@@ -86,4 +84,4 @@ const index = () => {
     );
 };
 
-export default index;
+export default Index;

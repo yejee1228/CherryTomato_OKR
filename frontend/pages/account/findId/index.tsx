@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import Link from 'next/link';
-import { AlertBox, ContentWrap, RedButton, RedButtonSpan, SubTitle, SubTitleBox } from 'components/account/findAccount'
-import { Input, InputWrap, AlertText } from 'components/common'
+import { ContentWrap } from 'components/account/findAccount'
+import * as A from 'components/account'
 import { Header } from 'components/index'
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 //import { useCounter } from 'lib/ts/useCounter';
 
 
-const index = () => {
+const Index = () => {
+  const router = useRouter()
   const [inputs, setInputs] = useState({
     memberName: '',
     phone: '',
@@ -23,7 +23,7 @@ const index = () => {
   const [currentSeconds, setCurrentSeconds] = useState(0);
   const { count, start, stop, restart } = useCounter(180, 1000); */
 
-  const handleInput = (e) => {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
 
     setInputs({
@@ -110,30 +110,30 @@ const index = () => {
         }
       });
     //아이디 찾아다가 ReturnId.js로 이동.
-    Router.push('/account/returnId')
+    router.push('/account/returnId')
   };
   return (
     <>
       <Header contents={'findId'} />
       <ContentWrap>
-        <SubTitleBox>
-          <SubTitle>휴대폰 인증</SubTitle>
+        <A.SubTitleBox>
+          <A.SubTitle>휴대폰 인증</A.SubTitle>
           {/* {phoneErrorMsg != '' && (
             <SubTitleComment> {phoneErrorMsg} </SubTitleComment>
           )} */}
-        </SubTitleBox>
-        <InputWrap>
-          <Input
-            type="text"
-            placeholder="성명"
-            name="memberName"
+        </A.SubTitleBox>
+        <A.InputWrap>
+          <A.Input
+            type='text'
+            placeholder='성명'
+            name='memberName'
             value={memberName}
             onChange={handleInput}
           />
-          <Input
-            type="text"
-            placeholder="휴대폰번호('-'제외)"
-            name="phone"
+          <A.Input
+            type='text'
+            placeholder={`휴대폰번호('-'제외)`}
+            name='phone'
             value={phone}
             onChange={handleInput}
           />
@@ -141,9 +141,9 @@ const index = () => {
             {transNum === false ? '인증번호 전송' : '재전송'}{' '}
           </TransAuthButton>
           <AuthNumberInput
-            type="text"
+            type='text'
             name={authCode}
-            placeholder="인증코드를 입력해 주세요."
+            placeholder='인증코드를 입력해 주세요.'
           />
           <AuthTime>
             {currentMinutes < 10 ? `0${currentMinutes}` : currentMinutes}:
@@ -152,21 +152,21 @@ const index = () => {
           <AuthButton onClick={doAuth}>
             인증하기
           </AuthButton> */}
-          <AlertBox>
-            {errorMsg != '' && <AlertText AlertType='error'>{errorMsg}</AlertText>}
-            {message != '' && <AlertText AlertType='success'>{message}</AlertText>}
-          </AlertBox>
-        </InputWrap>
-        <RedButton onClick={findId}>
-          <Link href="/account/findAccount/findId/returnId">
+          <A.AlertBox>
+            {errorMsg != '' && <A.AlertText AlertType='error'>{errorMsg}</A.AlertText>}
+            {message != '' && <A.AlertText AlertType='success'>{message}</A.AlertText>}
+          </A.AlertBox>
+        </A.InputWrap>
+        <A.RedButton onClick={findId}>
+          <div onClick={() => router.push('/account/findAccount/findId/returnId')}>
             <a>
-              <RedButtonSpan>아이디 찾기</RedButtonSpan>
+              <A.RedButtonSpan>아이디 찾기</A.RedButtonSpan>
             </a>
-          </Link>
-        </RedButton>
+          </div>
+        </A.RedButton>
       </ContentWrap>
     </>
   );
 };
 
-export default index;
+export default Index;

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 import { Header } from 'components'
-import { ContentWrap, RedButton, RedButtonSpan, SubTitleBox, SubTitleCommentRed } from 'components/account/findAccount'
-import { EyeIcon, Input, InputBox, InputWrap, } from 'components/common'
+import { ContentWrap, SubTitleCommentRed } from 'components/account/findAccount'
+import { InputIcon, Input, InputBox, InputWrap, RedButton, RedButtonSpan, SubTitleBox } from 'components/account'
 
-const index = () => {
+const Index = () => {
     const [passWordType, setPassWordType] = useState('password')
     const [passwd, setPasswd] = useState('')
     const [checkPasswd, setCheckPasswd] = useState('')
@@ -26,14 +26,14 @@ const index = () => {
                 </SubTitleBox>
                 <InputWrap style={{ marginTop: '9px' }}>
                     <InputBox>
-                        <Input type={passWordType} name="passwd" value={passwd} placeholder="영문/숫자/특수문자 중 2가지 이상 조합, 6~12자"
+                        <Input type={passWordType} name='passwd' value={passwd} placeholder='영문/숫자/특수문자 중 2가지 이상 조합, 6~12자'
                         />
-                        {passWordType === "password" ? <EyeIcon onClick={changePwType}><AiFillEyeInvisible /></EyeIcon> : <div onClick={changePwType}><AiFillEye /></div>}
+                        {passWordType === 'password' ? <InputIcon onClick={changePwType}><AiFillEyeInvisible /></InputIcon> : <div onClick={changePwType}><AiFillEye /></div>}
                     </InputBox>
                     <InputBox>
-                        <Input type={passWordType} name="checkPasswd" value={checkPasswd} placeholder="새 비밀번호 확인"
+                        <Input type={passWordType} name='checkPasswd' value={checkPasswd} placeholder='새 비밀번호 확인'
                         />
-                        {passWordType === "password" ? <EyeIcon onClick={changePwType}><AiFillEyeInvisible /></EyeIcon> : <div onClick={changePwType}><AiFillEye /></div>}
+                        {passWordType === 'password' ? <InputIcon onClick={changePwType}><AiFillEyeInvisible /></InputIcon> : <div onClick={changePwType}><AiFillEye /></div>}
                     </InputBox>
                 </InputWrap>
                 <RedButton>
@@ -46,4 +46,4 @@ const index = () => {
     );
 };
 
-export default index;
+export default Index;
