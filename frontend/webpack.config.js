@@ -6,7 +6,7 @@ module.exports = {
   entry: './pages/_app.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'code.bundle.js',
+    filename: 'code.bundle.ts',
   },
   module: {
     rules: [{ test: /\.js$/, use: 'babel-loader' }],

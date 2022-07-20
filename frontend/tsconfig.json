@@ -9,8 +9,8 @@
     "baseUrl": "./" /* 절대경로 모듈이 아닌, 모듈이 위치한 기준 디렉토리 */,
     "paths": {
       /* baseUrl 기준으로 불러올 모듈의 위치를 재지정하는 엔트리 */
-      "@": ["pages/*"],
-      "@compnent": ["components/*"]
+      "@": ["/pages/*"],
+      "@component": ["/components/*"]
     },
     "typeRoots": [
       /* 타입정의를 포함할 폴더목록, '/node_modules/@types/' 는 기본 포함됨 */
@@ -36,7 +36,9 @@
   "include": [
     /* include: 컴파일에 포함할 디렉토리/파일 경로 */ "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "webpack.config.js",
+    "babel.config.js"
   ],
   "exclude": [/* exclude: 컴파일에 제외할 디렉토리/파일 경로 */ "node_modules"]
 }

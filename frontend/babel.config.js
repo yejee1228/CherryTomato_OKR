@@ -17,7 +17,7 @@ module.exports = {
         alias: {
           '@': './src',
         },
-        extensions: ['.js', '.jsx', '.tsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     ],
   ],
