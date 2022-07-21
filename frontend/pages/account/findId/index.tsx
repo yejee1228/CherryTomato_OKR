@@ -116,27 +116,29 @@ const Index = () => {
     <>
       <Header contents={'findId'} />
       <ContentWrap>
-        <A.SubTitleBox>
-          <A.SubTitle>휴대폰 인증</A.SubTitle>
-          {/* {phoneErrorMsg != '' && (
+        <A.SubTitle>휴대폰 인증</A.SubTitle>
+        {/* {phoneErrorMsg != '' && (
             <SubTitleComment> {phoneErrorMsg} </SubTitleComment>
           )} */}
-        </A.SubTitleBox>
         <A.InputWrap>
-          <A.Input
-            type='text'
-            placeholder='성명'
-            name='memberName'
-            value={memberName}
-            onChange={handleInput}
-          />
-          <A.Input
-            type='text'
-            placeholder={`휴대폰번호('-'제외)`}
-            name='phone'
-            value={phone}
-            onChange={handleInput}
-          />
+          <A.InputBox>
+            <A.Input
+              type='text'
+              placeholder='성명'
+              name='memberName'
+              value={memberName}
+              onChange={handleInput}
+            />
+          </A.InputBox>
+          <A.InputBox>
+            <A.Input
+              type='text'
+              placeholder={`휴대폰번호('-'제외)`}
+              name='phone'
+              value={phone}
+              onChange={handleInput}
+            />
+          </A.InputBox>
           {/* <TransAuthButton onClick={transSms}>
             {transNum === false ? '인증번호 전송' : '재전송'}{' '}
           </TransAuthButton>
@@ -153,8 +155,8 @@ const Index = () => {
             인증하기
           </AuthButton> */}
           <A.AlertBox>
-            {errorMsg != '' && <A.AlertText AlertType='error'>{errorMsg}</A.AlertText>}
-            {message != '' && <A.AlertText AlertType='success'>{message}</A.AlertText>}
+            {errorMsg != '' && <A.AlertText alertType='error'>{errorMsg}</A.AlertText>}
+            {message != '' && <A.AlertText alertType='success'>{message}</A.AlertText>}
           </A.AlertBox>
         </A.InputWrap>
         <A.RedButton onClick={findId}>

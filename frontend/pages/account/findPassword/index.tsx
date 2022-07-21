@@ -49,15 +49,13 @@ const Index = () => {
         <>
             <Header contents='findPassword' />
             <F.ContentWrap>
-                <A.SubTitleBox>
-                    <F.ReturnComment>가입하신 이메일을 입력 후<br />
-                        하단의 본인인증 버튼을 누르시면<br />
-                        비밀번호를 재설정할 수 있습니다.
-                    </F.ReturnComment>
-                </A.SubTitleBox>
-                <A.InputWrap style={{ margin: '40px 0 24px' }}>
+                <F.ReturnComment>가입하신 이메일을 입력 후<br />
+                    하단의 본인인증 버튼을 누르시면<br />
+                    비밀번호를 재설정할 수 있습니다.
+                </F.ReturnComment>
+                <A.InputWrap>
                     <A.Input type='email' name='email' placeholder='이메일 주소' value={email} ref={inputRef} onChange={handleInput} />
-                    {error !== '' && <A.AlertText style={{ marginTop: '1px', textAlign: 'left' }} AlertType='error'>{error}</A.AlertText>}
+                    {error !== '' && <A.AlertText AlertType='error'>{error}</A.AlertText>}
                 </A.InputWrap>
                 <A.RedButton onClick={authCheck}>
                     <A.RedButtonSpan>본인인증</A.RedButtonSpan>

@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
 export const SubTitleBox = styled.div`
+text-align: left;
+`
+export const SubTitleBoxPw = styled(SubTitleBox)`
+margin-bottom: 24px;
+text-align: center;
 `
 export const SubTitle = styled.p`
 margin-bottom:4px;
@@ -23,13 +28,16 @@ export const InputWrap = styled.div`
 margin: 40px 0 24.5px; 
 position: relative;
 `
+export const InputWrapMT = styled(InputWrap)`
+margin-top: 9px
+`
 export const InputBox = styled.div`
 position: relative;
+margin: 0 0 8px;
 `
 export const Input = styled.input`
 width: 100%;
 height: 48px;
-margin: 0 0 8px;
 padding: 15px 12px;
 border-radius: 6px;
 border: solid 1px #ababab;
@@ -62,10 +70,12 @@ text-align: left;
 width:320px;
 padding: 0 4px;
 `
-export const AlertText = styled.p<{ AlertType: string }>`
+export const AlertText = styled.p<{ alertType: string }>`
 font-family: NotoSans;
 font-size: 12px;
-color: ${({ AlertType }) => AlertType === 'error' ? '#ff0000' : '#2a78ff'};
+color: ${({ alertType }) => alertType === 'error' ? '#ff0000' : '#2a78ff'};
+text-align: left;
+margin:4px 4px 0;
 `
 export const LinkBox = styled.div`
 height: 17px;

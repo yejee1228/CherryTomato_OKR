@@ -10,9 +10,7 @@ const Index = () => {
         <>
             <Header contents={'findId'} />
             <F.ContentWrap>
-                <A.SubTitleBox>
-                    <F.ReturnComment>회원님의 정보와 일치하는 아이디 입니다.</F.ReturnComment>
-                </A.SubTitleBox>
+                <F.ReturnComment>회원님의 정보와 일치하는 아이디 입니다.</F.ReturnComment>
                 <F.ReturnBox>
                     <F.ReturnText>a00298***</F.ReturnText>
                 </F.ReturnBox>

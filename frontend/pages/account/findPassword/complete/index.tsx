@@ -9,13 +9,13 @@ const Index = () => {
         <>
             <Header contents={'findPassword'} />
             <F.ContentWrap>
-                <A.SubTitleBox style={{ marginBottom: '24px' }}>
+                <A.SubTitleBoxPw>
                     <A.SubTitle>
                         <A.SubTitleComment>
                             비밀번호 변경이 완료되었습니다.
                         </A.SubTitleComment>
                     </A.SubTitle>
-                </A.SubTitleBox>
+                </A.SubTitleBoxPw>
                 <A.RedButton onClick={() => router.push('/account/login')}>
                     <A.RedButtonSpan>
                         로그인
