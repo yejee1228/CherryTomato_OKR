@@ -48,12 +48,12 @@ const Index = () => {
     return (
         <>
             <Header contents='findPassword' />
-            <ContentWrap>
+            <F.ContentWrap>
                 <A.SubTitleBox>
-                    <ReturnComment>가입하신 이메일을 입력 후<br />
+                    <F.ReturnComment>가입하신 이메일을 입력 후<br />
                         하단의 본인인증 버튼을 누르시면<br />
                         비밀번호를 재설정할 수 있습니다.
-                    </ReturnComment>
+                    </F.ReturnComment>
                 </A.SubTitleBox>
                 <A.InputWrap style={{ margin: '40px 0 24px' }}>
                     <A.Input type='email' name='email' placeholder='이메일 주소' value={email} ref={inputRef} onChange={handleInput} />
@@ -69,15 +69,15 @@ const Index = () => {
                         </A.LinkBox>
                     </a>
                 </div>
-            </ContentWrap>
+            </F.ContentWrap>
             {
                 authError &&
                 <>
-                    <LayerBackground></LayerBackground>
-                    <LayerPopup>
-                        <LayerContent>회원정보가 일치하지 않습니다.</LayerContent>
-                        <LayerButton onClick={() => { setAuthError(false); setEmail('') }}><LayerButtonSpan>확인</LayerButtonSpan></LayerButton>
-                    </LayerPopup>
+                    <F.LayerBackground></F.LayerBackground>
+                    <F.LayerPopup>
+                        <F.LayerContent>회원정보가 일치하지 않습니다.</F.LayerContent>
+                        <F.LayerButton onClick={() => { setAuthError(false); setEmail('') }}><F.LayerButtonSpan>확인</F.LayerButtonSpan></F.LayerButton>
+                    </F.LayerPopup>
                 </>
             }
         </>
