@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 import { Header } from 'components'
-import { ContentWrap, SubTitleCommentRed } from 'components/account/findAccount'
-import { InputIcon, Input, InputBox, InputWrap, RedButton, RedButtonSpan, SubTitleBox } from 'components/account'
+import * as F from 'components/account/findAccount'
+import * as A from 'components/account'
 
 const Index = () => {
     const [passWordType, setPassWordType] = useState('password')
@@ -17,31 +17,29 @@ const Index = () => {
     return (
         <>
             <Header contents={'findPassword'} />
-            <ContentWrap>
-                <SubTitleBox style={{ textAlign: 'left' }}>
-                    <SubTitleCommentRed>
+            <F.ContentWrap>
+                <A.SubTitleBox>
+                    <F.SubTitleCommentRed>
                         인증되었습니다.<br />
                         비밀번호를 재설정하여 주시기 바랍니다.
-                    </SubTitleCommentRed>
-                </SubTitleBox>
-                <InputWrap style={{ marginTop: '9px' }}>
-                    <InputBox>
-                        <Input type={passWordType} name='passwd' value={passwd} placeholder='영문/숫자/특수문자 중 2가지 이상 조합, 6~12자'
-                        />
-                        {passWordType === 'password' ? <InputIcon onClick={changePwType}><AiFillEyeInvisible /></InputIcon> : <div onClick={changePwType}><AiFillEye /></div>}
-                    </InputBox>
-                    <InputBox>
-                        <Input type={passWordType} name='checkPasswd' value={checkPasswd} placeholder='새 비밀번호 확인'
-                        />
-                        {passWordType === 'password' ? <InputIcon onClick={changePwType}><AiFillEyeInvisible /></InputIcon> : <div onClick={changePwType}><AiFillEye /></div>}
-                    </InputBox>
-                </InputWrap>
-                <RedButton>
-                    <RedButtonSpan>
+                    </F.SubTitleCommentRed>
+                </A.SubTitleBox>
+                <A.InputWrapMT>
+                    <A.InputBox>
+                        <A.Input type={passWordType} name='passwd' value={passwd} placeholder='영문/숫자/특수문자 중 2가지 이상 조합, 6~12자' />
+                        {passWordType === 'password' ? <A.InputIcon onClick={changePwType}><AiFillEyeInvisible /></A.InputIcon> : <div onClick={changePwType}><AiFillEye /></div>}
+                    </A.InputBox>
+                    <A.InputBox>
+                        <A.Input type={passWordType} name='checkPasswd' value={checkPasswd} placeholder='새 비밀번호 확인' />
+                        {passWordType === 'password' ? <A.InputIcon onClick={changePwType}><AiFillEyeInvisible /></A.InputIcon> : <div onClick={changePwType}><AiFillEye /></div>}
+                    </A.InputBox>
+                </A.InputWrapMT>
+                <A.RedButton>
+                    <A.RedButtonSpan>
                         확인
-                    </RedButtonSpan>
-                </RedButton>
-            </ContentWrap>
+                    </A.RedButtonSpan>
+                </A.RedButton>
+            </F.ContentWrap>
         </>
     );
 };

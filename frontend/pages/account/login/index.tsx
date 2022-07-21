@@ -1,10 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-import {
-    LoginWrap, LogoWrap, LogoSpan, LoginContent,
-    Error, LoginButton, LoginSpan, NonLoginWrap,
-    FindId, FindPassword, Signup, Vertical
-} from 'components/account/login'
-import { InputBox, Input, InputIcon } from 'components/account'
+import * as L from 'components/account/login'
+import * as A from 'components/account'
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 import { MdCancel } from 'react-icons/md';
 import axios from 'axios'
@@ -91,37 +87,37 @@ const Index = () => {
     }
 
     return (
-        <LoginWrap>
-            <LogoWrap>
+        <L.LoginWrap>
+            <L.LogoWrap>
                 {/*로고 이미지*/}
-                <LogoSpan>Cherry Tomato</LogoSpan>
-            </LogoWrap>
-            <LoginContent>
-                <InputBox>
-                    <Input type='email' name='email' value={email} placeholder='이메일 주소' onChange={handleInput} ref={inputRef} style={emailError !== '' ? errorStyle : {}} />
-                    <InputIcon onClick={() => setInputs({ ...inputs, email: '' })}><MdCancel /></InputIcon>
-                </InputBox>
-                {emailError !== '' && <Error>{emailError}</Error>}
-                <InputBox>
-                    <Input type={passWordType} name='passwd' value={password} placeholder='비밀번호' onChange={handleInput} style={passWordError !== '' ? errorStyle : {}} />
+                <L.LogoSpan>Cherry Tomato</L.LogoSpan>
+            </L.LogoWrap>
+            <L.LoginContent>
+                <A.InputBox>
+                    <A.Input type='email' name='email' value={email} placeholder='이메일 주소' onChange={handleInput} ref={inputRef} style={emailError !== '' ? errorStyle : {}} />
+                    <A.InputIcon onClick={() => setInputs({ ...inputs, email: '' })}><MdCancel /></A.InputIcon>
+                </A.InputBox>
+                {emailError !== '' && <L.Error>{emailError}</L.Error>}
+                <A.InputBox>
+                    <A.Input type={passWordType} name='passwd' value={password} placeholder='비밀번호' onChange={handleInput} style={passWordError !== '' ? errorStyle : {}} />
                     {
                         passWordType === 'password'
-                            ? <InputIcon onClick={changePwType}><AiFillEyeInvisible /></InputIcon>
-                            : <InputIcon onClick={changePwType}><AiFillEye /></InputIcon>
+                            ? <A.InputIcon onClick={changePwType}><AiFillEyeInvisible /></A.InputIcon>
+                            : <A.InputIcon onClick={changePwType}><AiFillEye /></A.InputIcon>
                     }
-                </InputBox>
-                {passWordError !== '' && <Error>{passWordError}</Error>}
-            </LoginContent>
-            <LoginButton onClick={doLogin}>
-                <LoginSpan>로그인</LoginSpan>
-            </LoginButton>
-            {loginError !== '' && <Error>{loginError}</Error>}
-            <NonLoginWrap>
-                <div onClick={() => router.push('/account/findId')}><a><FindId>아이디찾기</FindId></a></div> <Vertical >&#124;</Vertical>
-                <div onClick={() => router.push('/account/findPassword')}><a><FindPassword>비밀번호찾기</FindPassword></a></div> <Vertical >&#124;</Vertical>
-                <div onClick={() => router.push('/account/signup')}><a><Signup>회원가입</Signup></a></div>
-            </NonLoginWrap>
-        </LoginWrap>
+                </A.InputBox>
+                {passWordError !== '' && <L.Error>{passWordError}</L.Error>}
+            </L.LoginContent>
+            <L.LoginButton onClick={doLogin}>
+                <L.LoginSpan>로그인</L.LoginSpan>
+            </L.LoginButton>
+            {loginError !== '' && <L.Error>{loginError}</L.Error>}
+            <L.NonLoginWrap>
+                <L.FindId onClick={() => router.push('/account/findId')}><a>아이디찾기</a></L.FindId> <L.Vertical >&#124;</L.Vertical>
+                <L.FindPassword onClick={() => router.push('/account/findPassword')}><a>비밀번호찾기</a></L.FindPassword> <L.Vertical >&#124;</L.Vertical>
+                <L.Signup onClick={() => router.push('/account/signup')}><a>회원가입</a></L.Signup>
+            </L.NonLoginWrap>
+        </L.LoginWrap>
     );
 };
 
