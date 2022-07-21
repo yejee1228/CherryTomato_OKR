@@ -113,9 +113,9 @@ const Index = () => {
             </L.LoginButton>
             {loginError !== '' && <L.Error>{loginError}</L.Error>}
             <L.NonLoginWrap>
-                <div onClick={() => router.push('/account/findId')}><a><L.FindId>아이디찾기</L.FindId></a></div> <L.Vertical >&#124;</L.Vertical>
-                <div onClick={() => router.push('/account/findPassword')}><a><L.FindPassword>비밀번호찾기</L.FindPassword></a></div> <L.Vertical >&#124;</L.Vertical>
-                <div onClick={() => router.push('/account/signup')}><a><L.Signup>회원가입</L.Signup></a></div>
+                <L.FindId onClick={() => router.push('/account/findId')}><a>아이디찾기</a></L.FindId> <L.Vertical >&#124;</L.Vertical>
+                <L.FindPassword onClick={() => router.push('/account/findPassword')}><a>비밀번호찾기</a></L.FindPassword> <L.Vertical >&#124;</L.Vertical>
+                <L.Signup onClick={() => router.push('/account/signup')}><a>회원가입</a></L.Signup>
             </L.NonLoginWrap>
         </L.LoginWrap>
     );
