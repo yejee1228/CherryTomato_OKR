@@ -55,7 +55,7 @@ const Index = () => {
                 </F.ReturnComment>
                 <A.InputWrap>
                     <A.Input type='email' name='email' placeholder='이메일 주소' value={email} ref={inputRef} onChange={handleInput} />
-                    {error !== '' && <A.AlertText AlertType='error'>{error}</A.AlertText>}
+                    {error !== '' && <A.AlertText alertType='error'>{error}</A.AlertText>}
                 </A.InputWrap>
                 <A.RedButton onClick={authCheck}>
                     <A.RedButtonSpan>본인인증</A.RedButtonSpan>
