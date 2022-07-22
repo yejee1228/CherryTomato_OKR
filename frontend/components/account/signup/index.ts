@@ -57,3 +57,42 @@ font-weight: bold;
 letter-spacing: -0.38px;
 color: #222;
 `
+export const SelectBox = styled.select`
+width: 100%;
+height: 48px;
+padding: 15px 10px;
+border-radius: 6px;
+border: solid 1px #ababab;
+option{
+
+}
+`
+export const InfoIcon = styled.div`
+width: 16px;
+height: 16px;
+position: absolute;
+right: 165px;
+top: 15px;
+background: url('/images/info.png')
+`
+export const InfoLayer = styled.div`
+height: 32px;
+padding:8px;
+position: absolute;
+top: 42px;
+left: 46px;
+border-radius: 6px;
+background-color: #ebebeb;
+font-size: 12px;
+color: #222;
+:after{
+    content:"";
+    border-top:0px solid transparent;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 9px solid #ebebeb;
+    position: absolute;
+    top: -8px;
+    left: 93px;
+}
+`

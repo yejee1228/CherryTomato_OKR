@@ -31,6 +31,9 @@ position: relative;
 export const InputWrapMT = styled(InputWrap)`
 margin-top: 9px
 `
+export const InputWrapMB = styled(InputWrap)`
+margin-bottom: 29px;
+`
 export const InputBox = styled.div`
 position: relative;
 margin: 0 0 8px;
@@ -50,7 +53,50 @@ color: #cccccc;
 right: 12px;
 top: 15px;
 `
-export const TransAuthButton = styled.button`
+export const AuthInput = styled.input`
+width: 224px;
+height: 34.5px;
+margin-right: 15px;
+border: none;
+border-bottom: solid 1px #ababab;
+border-radius: 0;
+padding: 10.5px 4.5px 4.5px;
+font-size: 13px;
+font-weight: bold;
+color:#222;
+`
+export const AuthTime = styled.span`
+position:absolute;
+top:124px;
+right:97px;
+font-family: NotoSans;
+font-size: 13px;
+line-height: 1.38;
+letter-spacing: -0.33px;
+color: #f92626;
+`
+export const AuthButton = styled.button`
+width: 76px;
+height: 34px;
+padding: 9px 13px 8px 12px;
+border-radius: 6px;
+border:none;
+background-color: #ffe2e2;
+font-family: NotoSans;
+font-size: 13px;
+line-height: 1.38;
+letter-spacing: -0.33px;
+color: #787878;
+`
+export const AuthButtonSpan = styled.span<{ authYn: boolean }>`
+font-family: NotoSans;
+font-size: 13px;
+line-height: 1.38;
+letter-spacing: -0.33px;
+text-align: left;
+color: ${({ authYn }) => authYn ? '#9e9e9e' : '#787878'};
+`
+export const TransButton = styled.button`
 position: absolute;
 width: 100px;
 height: 36px;
@@ -109,4 +155,7 @@ text-align: center;
 export const RedButtonSpan = styled.span`
 color: #ffffff;
 font-size: 16px;
+`
+export const GrayButton = styled(RedButton)`
+background-color: #eee;
 `

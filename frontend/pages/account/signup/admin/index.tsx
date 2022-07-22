@@ -19,20 +19,16 @@ const Index = () => {
     passwordCheck: '',
     phone: '',
   });
-  const { email, memberName, password, passwordCheck, phone } = inputs;
-  const [errorMsg, setErrorMsg] = useState('');
+  const { email, memberName, password, passwordCheck, phone } = inputs
   const [passWordType, setPassWordType] = useState('password')
   const [passwordCheckType, setPasswordCheckType] = useState('password')
   const [emailError, setEmailError] = useState('')
   const [nameError, setNameError] = useState('')
   const [passWordError, setPassWordError] = useState('')
   const [phoneError, setPhoneError] = useState('')
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null)
   const errorStyle = { border: 'solid 1px #ff0000', backgroundColor: '#ffe2e2' }
 
-  /* useEffect(()=>{
-  
-  }, [inputs]) */
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
 
@@ -41,25 +37,26 @@ const Index = () => {
       [name]: value,
     });
 
-  };
+  }
+
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [])
 
   useEffect(() => {
     if (email !== '' && !regExp.checkRegExp(email, regExp.emailRegExp)) {
-      console.log(email)
       setEmailError('이메일 형식이 아닙니다.')
     } else {
       setEmailError('')
     }
 
     if (memberName !== '' && !regExp.checkRegExp(memberName, regExp.memberNameRegExp)) {
-      console.log(memberName)
       setNameError('한글과 영문만 입력 가능합니다.')
     } else {
       setNameError('')
     }
 
     if (password !== '' && !regExp.checkRegExp(password, regExp.passwordRegExp)) {
-      console.log(password)
       setPassWordError('영문/숫자/특수문자 중 2가지 이상 조합하여 6~12자로 입력해주세요.')
     } else if (passwordCheck !== '' && password !== passwordCheck) {
       setPassWordError('비밀번호가 일치하지 않습니다.')
@@ -88,7 +85,7 @@ const Index = () => {
       setEmailError('이메일을 입력해주세요.')
       return
     } else if (memberName == '') {
-      setNameError('성명을 입력해주세요.')
+      setNameError('이름을 입력해주세요.')
       return
     } else if (password == '') {
       setPassWordError('비밀번호를 입력해주세요.')
@@ -115,7 +112,7 @@ const Index = () => {
             {emailError !== '' && <A.AlertText alertType='error'>{emailError}</A.AlertText>}
           </A.InputBox>
           <A.InputBox>
-            <A.Input type='text' placeholder='성명' name='memberName' value={memberName} onChange={handleInput} />
+            <A.Input type='text' placeholder='이름' name='memberName' value={memberName} onChange={handleInput} />
             {nameError !== '' && <A.AlertText alertType='error'>{nameError}</A.AlertText>}
           </A.InputBox>
           <A.InputBox>
