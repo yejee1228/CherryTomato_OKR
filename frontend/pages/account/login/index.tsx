@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
-import * as L from 'components/account/login'
-import * as A from 'components/account'
-import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
+import * as L from 'components/account/login';
+import * as A from 'components/account';
+import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { MdCancel } from 'react-icons/md';
-import axios from 'axios'
+import axios from 'axios';
 import { useRouter } from 'next/router';
 
 const Index = () => {
@@ -17,7 +17,7 @@ const Index = () => {
     const [emailError, setEmailError] = useState('')
     const [passWordError, setPassWordError] = useState('')
     const [loginError, setLoginError] = useState('')
-    const inputRef = useRef<HTMLInputElement>(null);
+    const inputRef = useRef<HTMLInputElement>(null)
     const errorStyle = { border: 'solid 1px #ff0000', backgroundColor: '#ffe2e2' }
 
     useEffect(() => {
@@ -29,7 +29,7 @@ const Index = () => {
         setInputs({
             ...inputs,
             [name]: value
-        });
+        })
 
     }
     const changePwType = () => {
