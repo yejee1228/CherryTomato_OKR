@@ -19,7 +19,13 @@ const GlobalStyle = createGlobalStyle`
   input{
     caret-color: #f92626; background-color: #ffffff
   }
-  input:focus {
+  select{
+    color: #ababab;
+    appearance: none;
+    background: url(/images/dropdown_arrow.svg) right no-repeat;
+    background-origin: content-box;
+  }
+  input:focus, select:focus {
     outline-color: #f92626;
   }
   input::placeholder{
