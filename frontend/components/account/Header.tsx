@@ -1,12 +1,13 @@
 import { BsChevronLeft } from "react-icons/bs";
-import { Before, Title, TitleBox } from './header'
+import { Before, Title, TitleBox } from 'styles/accountStyle'
 
-export const Header = ({ contents }) => {
+const Header = ({ contents }) => {
     return (
         <TitleBox>
             <Before><BsChevronLeft /></Before>
             <Title>
-                {contents === 'signup_admin' && '관리자 회원가입'}
+                {contents === 'signup' && '회원가입'}
+                {contents === 'signup_admin' && '슈퍼관리자 회원가입'}
                 {contents === 'signup_common' && '일반 회원가입'}
                 {contents === 'findId' && '아이디 찾기'}
                 {contents === 'findPassword' && '비밀번호 찾기'}
@@ -14,3 +15,5 @@ export const Header = ({ contents }) => {
         </TitleBox>
     );
 };
+
+export default Header;

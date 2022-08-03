@@ -1,7 +1,6 @@
-import { Header } from 'components'
+import { Header } from 'components/account'
 import { AiOutlineRight } from 'react-icons/ai';
-import * as F from 'components/account/findAccount';
-import * as A from 'components/account'
+import * as A from 'styles/accountStyle'
 import { useRouter } from 'next/router';
 
 const Index = () => {
@@ -9,11 +8,11 @@ const Index = () => {
     return (
         <>
             <Header contents={'findId'} />
-            <F.ContentWrap>
-                <F.ReturnComment>회원님의 정보와 일치하는 아이디 입니다.</F.ReturnComment>
-                <F.ReturnBox>
-                    <F.ReturnText>a00298***</F.ReturnText>
-                </F.ReturnBox>
+            <A.ContentWrap>
+                <A.ReturnComment>회원님의 정보와 일치하는 아이디 입니다.</A.ReturnComment>
+                <A.ReturnBox>
+                    <A.ReturnText>a00298***</A.ReturnText>
+                </A.ReturnBox>
                 <A.RedButton>
                     <A.RedButtonSpan>로그인</A.RedButtonSpan>
                 </A.RedButton>
@@ -24,7 +23,7 @@ const Index = () => {
                         </a>
                     </div>
                 </A.LinkBox>
-            </F.ContentWrap>
+            </A.ContentWrap>
         </>
     );
 };

@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
   }
   *{margin:0; padding: 0;}
   input{
-    caret-color: #f92626; background-color: #ffffff
+    caret-color: #f96726; background-color: #ffffff
   }
   select{
     color: #ababab;
@@ -26,10 +26,13 @@ const GlobalStyle = createGlobalStyle`
     background-origin: content-box;
   }
   input:focus, select:focus {
-    outline-color: #f92626;
+    outline-color: #f96726;
   }
   input::placeholder{
     color: #ababab; font-family: NotoSans; font-size: 13px; font-weight: normal; font-stretch: normal; font-style: normal; line-height: 1.38; letter-spacing: -0.33px; text-align: left;
+  }
+  button{
+    
   }
 
 `

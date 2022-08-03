@@ -6,7 +6,7 @@ import { persistStore } from 'redux-persist';
 import { configureStore } from '@reduxjs/toolkit';
 import { ThemeProvider, DefaultTheme } from 'styled-components';
 
-import GlobalStyle from 'lib/styles/globalStyle';
+import GlobalStyle from 'styles/globalStyle';
 import { wrapper } from 'store';
 import persistReducer from 'store/modules';
 
