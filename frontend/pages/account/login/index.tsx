@@ -1,6 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
-import * as L from 'components/account/login';
-import * as A from 'components/account';
+import React, { useState, useRef, useEffect } from 'react';
+import * as A from 'styles/accountStyle';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { MdCancel } from 'react-icons/md';
 import axios from 'axios';
@@ -23,7 +22,7 @@ const Index = () => {
     useEffect(() => {
         inputRef.current.focus()
     }, [])
-    const handleInput = (e) => {
+    const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value, name } = e.target
 
         setInputs({
@@ -87,17 +86,17 @@ const Index = () => {
     }
 
     return (
-        <L.LoginWrap>
-            <L.LogoWrap>
+        <A.LoginWrap>
+            <A.LogoWrap>
                 {/*로고 이미지*/}
-                <L.LogoSpan>Cherry Tomato</L.LogoSpan>
-            </L.LogoWrap>
-            <L.LoginContent>
+                <A.LogoSpan>Cherry Tomato</A.LogoSpan>
+            </A.LogoWrap>
+            <A.LoginContent>
                 <A.InputBox>
                     <A.Input type='email' name='email' value={email} placeholder='이메일 주소' onChange={handleInput} ref={inputRef} style={emailError !== '' ? errorStyle : {}} />
                     <A.InputIcon onClick={() => setInputs({ ...inputs, email: '' })}><MdCancel /></A.InputIcon>
                 </A.InputBox>
-                {emailError !== '' && <L.Error>{emailError}</L.Error>}
+                {emailError !== '' && <A.Error>{emailError}</A.Error>}
                 <A.InputBox>
                     <A.Input type={passWordType} name='passwd' value={password} placeholder='비밀번호' onChange={handleInput} style={passWordError !== '' ? errorStyle : {}} />
                     {
@@ -106,18 +105,18 @@ const Index = () => {
                             : <A.InputIcon onClick={changePwType}><AiFillEye /></A.InputIcon>
                     }
                 </A.InputBox>
-                {passWordError !== '' && <L.Error>{passWordError}</L.Error>}
-            </L.LoginContent>
-            <L.LoginButton onClick={doLogin}>
-                <L.LoginSpan>로그인</L.LoginSpan>
-            </L.LoginButton>
-            {loginError !== '' && <L.Error>{loginError}</L.Error>}
-            <L.NonLoginWrap>
-                <L.FindId onClick={() => router.push('/account/findId')}><a>아이디찾기</a></L.FindId> <L.Vertical >&#124;</L.Vertical>
-                <L.FindPassword onClick={() => router.push('/account/findPassword')}><a>비밀번호찾기</a></L.FindPassword> <L.Vertical >&#124;</L.Vertical>
-                <L.Signup onClick={() => router.push('/account/signup')}><a>회원가입</a></L.Signup>
-            </L.NonLoginWrap>
-        </L.LoginWrap>
+                {passWordError !== '' && <A.Error>{passWordError}</A.Error>}
+            </A.LoginContent>
+            <A.RedButton onClick={doLogin}>
+                <A.LoginSpan>로그인</A.LoginSpan>
+            </A.RedButton>
+            {loginError !== '' && <A.Error>{loginError}</A.Error>}
+            <A.NonLoginWrap>
+                <A.FindId onClick={() => router.push('/account/findId')}><a>아이디찾기</a></A.FindId> <A.Vertical >&#124;</A.Vertical>
+                <A.FindPassword onClick={() => router.push('/account/findPassword')}><a>비밀번호찾기</a></A.FindPassword> <A.Vertical >&#124;</A.Vertical>
+                <A.Signup onClick={() => router.push('/account/signup')}><a>회원가입</a></A.Signup>
+            </A.NonLoginWrap>
+        </A.LoginWrap>
     );
 };
 

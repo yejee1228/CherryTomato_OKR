@@ -1,9 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { AiOutlineRight } from 'react-icons/ai';
-import { Header } from 'components';
-import * as F from 'components/account/findAccount';
-import * as A from 'components/account'
+import { Header } from 'components/account';
+import * as A from 'styles/accountStyle';
 import { useRouter } from 'next/router';
 
 const Index = () => {
@@ -48,11 +47,11 @@ const Index = () => {
     return (
         <>
             <Header contents='findPassword' />
-            <F.ContentWrap>
-                <F.ReturnComment>가입하신 이메일을 입력 후<br />
+            <A.ContentWrap>
+                <A.ReturnComment>가입하신 이메일을 입력 후<br />
                     하단의 본인인증 버튼을 누르시면<br />
                     비밀번호를 재설정할 수 있습니다.
-                </F.ReturnComment>
+                </A.ReturnComment>
                 <A.InputWrap>
                     <A.Input type='email' name='email' placeholder='이메일 주소' value={email} ref={inputRef} onChange={handleInput} />
                     {error !== '' && <A.AlertText alertType='error'>{error}</A.AlertText>}
@@ -63,19 +62,19 @@ const Index = () => {
                 <div onClick={() => router.push('/account/findId')}>
                     <a>
                         <A.LinkBox>
-                            <A.GreenSpan>가입하신 이메일</A.GreenSpan>을 잊으셨나요? <AiOutlineRight />
+                            <A.LinkSpan><A.GreenSpan>가입하신 이메일</A.GreenSpan>을 잊으셨나요? <AiOutlineRight /></A.LinkSpan>
                         </A.LinkBox>
                     </a>
                 </div>
-            </F.ContentWrap>
+            </A.ContentWrap>
             {
                 authError &&
                 <>
-                    <F.LayerBackground></F.LayerBackground>
-                    <F.LayerPopup>
-                        <F.LayerContent>회원정보가 일치하지 않습니다.</F.LayerContent>
-                        <F.LayerButton onClick={() => { setAuthError(false); setEmail('') }}><F.LayerButtonSpan>확인</F.LayerButtonSpan></F.LayerButton>
-                    </F.LayerPopup>
+                    <A.LayerBackground></A.LayerBackground>
+                    <A.LayerPopup>
+                        <A.LayerContent>회원정보가 일치하지 않습니다.</A.LayerContent>
+                        <A.LayerButton onClick={() => { setAuthError(false); setEmail('') }}><A.LayerButtonSpan>확인</A.LayerButtonSpan></A.LayerButton>
+                    </A.LayerPopup>
                 </>
             }
         </>

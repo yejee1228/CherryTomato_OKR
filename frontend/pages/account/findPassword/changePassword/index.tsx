@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
-import { Header } from 'components'
-import * as F from 'components/account/findAccount'
-import * as A from 'components/account'
+import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
+import { Header } from 'components/account';
+import * as A from 'styles/accountStyle';
 
 const Index = () => {
     const [passWordType, setPassWordType] = useState('password')
@@ -17,12 +16,12 @@ const Index = () => {
     return (
         <>
             <Header contents={'findPassword'} />
-            <F.ContentWrap>
+            <A.ContentWrap>
                 <A.SubTitleBox>
-                    <F.SubTitleCommentRed>
+                    <A.SubTitleCommentRed>
                         인증되었습니다.<br />
                         비밀번호를 재설정하여 주시기 바랍니다.
-                    </F.SubTitleCommentRed>
+                    </A.SubTitleCommentRed>
                 </A.SubTitleBox>
                 <A.InputWrapMT>
                     <A.InputBox>
@@ -39,7 +38,7 @@ const Index = () => {
                         확인
                     </A.RedButtonSpan>
                 </A.RedButton>
-            </F.ContentWrap>
+            </A.ContentWrap>
         </>
     );
 };

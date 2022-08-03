@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { ContentWrap } from 'components/account/findAccount'
-import * as A from 'components/account'
-import { Header } from 'components/index'
+import * as A from 'styles/accountStyle'
+import { Header } from 'components/account'
 import { useRouter } from 'next/router';
 //import { useCounter } from 'lib/ts/useCounter';
 
@@ -115,7 +114,7 @@ const Index = () => {
   return (
     <>
       <Header contents={'findId'} />
-      <ContentWrap>
+      <A.ContentWrap>
         <A.SubTitle>휴대폰 인증</A.SubTitle>
         {/* {phoneErrorMsg != '' && (
             <SubTitleComment> {phoneErrorMsg} </SubTitleComment>
@@ -166,7 +165,7 @@ const Index = () => {
             </a>
           </div>
         </A.RedButton>
-      </ContentWrap>
+      </A.ContentWrap>
     </>
   );
 };

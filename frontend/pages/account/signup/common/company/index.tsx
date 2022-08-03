@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-import * as A from 'components/account'
-import * as S from 'components/account/signup'
-import { Header } from 'components';
+import * as A from 'styles/accountStyle';
+import { Header } from 'components/account';
 import { useRouter } from 'next/router';
 
 const Index = () => {
@@ -54,8 +53,8 @@ const Index = () => {
     return (
         <>
             <Header contents={'signup_common'}></Header>
-            <S.SignupWrap>
-                <S.SignSubWrap>
+            <A.SignupWrap>
+                <A.SignSubWrap>
                     <A.InputBox>
                         <A.Input name='companyName' value={companyName} placeholder='회사명을 입력해주세요.' ref={inputRef} onChange={handleInput} />
                         {authYn && <A.AlertText alertType={'error'}>{companyErrorMsg}</A.AlertText>}
@@ -67,7 +66,7 @@ const Index = () => {
                         </A.AuthButton>
                         {authYn && <A.AlertText alertType={error ? 'error' : 'success'}>{message}</A.AlertText>}
                     </A.InputBox>
-                </S.SignSubWrap>
+                </A.SignSubWrap>
                 {
                     (authYn && !error)
                         ?
@@ -83,7 +82,7 @@ const Index = () => {
                             </A.GrayButton>
                         </>
                 }
-            </S.SignupWrap>
+            </A.SignupWrap>
         </>
     );
 };
