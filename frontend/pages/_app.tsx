@@ -4,18 +4,10 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import { configureStore } from '@reduxjs/toolkit';
-import { ThemeProvider, DefaultTheme } from 'styled-components';
 
-import GlobalStyle from 'styles/globalStyle';
-import { wrapper } from 'store';
-import persistReducer from 'store/modules';
-
-const theme: DefaultTheme = {
-  colors: {
-    primary: '#111',
-    secondary: '#0070f3',
-  },
-}
+import GlobalStyle from 'lib/styles/globalStyle';
+import { wrapper } from 'lib/store';
+import persistReducer from 'lib/store/modules';
 
 const store = configureStore({
   reducer: persistReducer,
@@ -32,13 +24,11 @@ function App({ Component, pageProps }: AppProps) {
     <>
       <Provider store={store}>
         <PersistGate persistor={persistor} loading={<div>loading...</div>}>
-          <ThemeProvider theme={theme}>
-            <GlobalStyle />
-            <Head>
-              <title>Cherry Tomato</title>
-            </Head>
-            <Component {...pageProps} />
-          </ThemeProvider>
+          <GlobalStyle />
+          <Head>
+            <title>Cherry Tomato</title>
+          </Head>
+          <Component {...pageProps} />
         </PersistGate>
       </Provider>
     </>

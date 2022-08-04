@@ -1,5 +1,5 @@
 import { Header } from 'components/account';
-import * as A from 'styles/accountStyle';
+import * as A from 'lib/styles/accountStyle';
 import { useRouter } from 'next/router';
 
 const Index = () => {
