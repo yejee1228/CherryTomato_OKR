@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import * as A from 'styles/accountStyle';
+import * as A from 'lib/styles/accountStyle';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { MdCancel } from 'react-icons/md';
 import axios from 'axios';

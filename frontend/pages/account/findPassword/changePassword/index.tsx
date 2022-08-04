@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { Header } from 'components/account';
-import * as A from 'styles/accountStyle';
+import * as A from 'lib/styles/accountStyle';
 
 const Index = () => {
     const [passWordType, setPassWordType] = useState('password')

@@ -1,6 +1,6 @@
 import { Header } from 'components/account'
 import { AiOutlineRight } from 'react-icons/ai';
-import * as A from 'styles/accountStyle'
+import * as A from 'lib/styles/accountStyle'
 import { useRouter } from 'next/router';
 
 const Index = () => {

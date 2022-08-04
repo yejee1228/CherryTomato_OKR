@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import * as A from 'styles/accountStyle'
+import * as A from 'lib/styles/accountStyle'
 import { Header } from 'components/account'
 import { useRouter } from 'next/router';
 //import { useCounter } from 'lib/ts/useCounter';
