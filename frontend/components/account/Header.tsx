@@ -1,10 +1,12 @@
+import { useRouter } from "next/router";
 import { BsChevronLeft } from "react-icons/bs";
-import { Before, Title, TitleBox } from 'styles/accountStyle'
+import { Before, Title, TitleBox } from 'lib/styles/accountStyle'
 
 const Header = ({ contents }) => {
+    const router = useRouter()
     return (
         <TitleBox>
-            <Before><BsChevronLeft /></Before>
+            <Before onClick={() => router.back()}><BsChevronLeft /></Before>
             <Title>
                 {contents === 'signup' && '회원가입'}
                 {contents === 'signup_admin' && '슈퍼관리자 회원가입'}

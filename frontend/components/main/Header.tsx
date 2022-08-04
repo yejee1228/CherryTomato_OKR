@@ -1,5 +1,5 @@
 import React from 'react';
-import * as M from 'styles/mainStyles';
+import * as M from 'lib/styles/mainStyles';
 
 const Header = () => {
     return (

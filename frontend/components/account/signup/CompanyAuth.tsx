@@ -1,10 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
-import * as A from 'styles/accountStyle';
+import * as A from 'lib/styles/accountStyle';
 import { Header } from 'components/account';
-import { useRouter } from 'next/router';
+import { setSignupState } from 'lib/store/modules/user.module';
+import { useDispatch } from 'react-redux';
 
 const Index = () => {
-    const router = useRouter()
+    const dispatch = useDispatch()
+    const [state, setState] = useState(false)
     const [inputs, setInputs] = useState({
         companyName: '',
         companyCode: ''
@@ -20,6 +22,10 @@ const Index = () => {
         inputRef.current.focus()
     }, [])
 
+    useEffect(() => {
+        dispatch(setSignupState(state))
+    }, [dispatch, state])
+
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value, name } = e.target;
 
@@ -31,7 +37,6 @@ const Index = () => {
 
     const doAuth = () => {
         setAuthYn(true)
-        console.log('click')
         setError(true)
         setCompanyErrorMsg('')
         setMessage('')
@@ -39,15 +44,13 @@ const Index = () => {
             setCompanyErrorMsg('회사명을 입력해주세요.')
         } else if (companyCode === '') {
             setMessage('인증번호를 입력해주세요.')
-        } else if (companyCode !== 'abcd') {
+        } else if (companyName !== '토마토컴퍼니') {
+            setMessage('등록되지 않은 회사명입니다. 담당자에게 문의해주세요.')
+        } else if (companyName !== '토마토컴퍼니' || companyCode !== 'A1B2C3D4') {
             setMessage('인증번호가 틀렸습니다. 인증번호를 다시 입력해주세요.')
         } else {
             setError(false)
-            /* axios.get('http://localhost:8080')
-                .then(res => {
-                    res.data
-                }) */
-            setMessage('인증이 완료되었습니다.')
+            setMessage(`인증이 완료되었습니다. 회원가입을 계속 진행해주세요.`)
         }
     }
     return (
@@ -56,11 +59,11 @@ const Index = () => {
             <A.SignupWrap>
                 <A.SignSubWrap>
                     <A.InputBox>
-                        <A.Input name='companyName' value={companyName} placeholder='회사명을 입력해주세요.' ref={inputRef} onChange={handleInput} />
+                        <A.Input name='companyName' value={companyName} placeholder='회사명을 입력해주세요.(토마토컴퍼니)' ref={inputRef} onChange={handleInput} />
                         {authYn && <A.AlertText alertType={'error'}>{companyErrorMsg}</A.AlertText>}
                     </A.InputBox>
                     <A.InputBox>
-                        <A.AuthInput name='companyCode' value={companyCode} placeholder='공유받은 회사코드를 입력해 주세요' onChange={handleInput} />
+                        <A.AuthInput name='companyCode' value={companyCode} placeholder='공유받은 회사코드를 입력해 주세요(A1B2C3D4)' onChange={handleInput} />
                         <A.AuthButton onClick={doAuth}>
                             <A.AuthButtonSpan authYn={authYn}>인증하기</A.AuthButtonSpan>
                         </A.AuthButton>
@@ -71,7 +74,7 @@ const Index = () => {
                     (authYn && !error)
                         ?
                         <>
-                            <A.RedButton onClick={() => router.push('./')}>
+                            <A.RedButton onClick={() => setState(true)}>
                                 <A.RedButtonSpan>다음</A.RedButtonSpan>
                             </A.RedButton>
                         </>
