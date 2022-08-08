@@ -12,13 +12,13 @@ const Index = () => {
 
   const [inputs, setInputs] = useState({
     email: '',
-    memberName: '',
+    name: '',
     password: '',
     passwordCheck: '',
     phone: '',
-    group: ''
+    groupString: ''
   });
-  const { email, memberName, password, passwordCheck, phone, group } = inputs
+  const { email, name, password, passwordCheck, phone, groupString } = inputs
   const [passWordType, setPassWordType] = useState('password')
   const [passwordCheckType, setPasswordCheckType] = useState('password')
   const [emailError, setEmailError] = useState('')
@@ -49,7 +49,7 @@ const Index = () => {
       setEmailError('')
     }
 
-    if (memberName !== '' && !regExp.checkRegExp(memberName, regExp.memberNameRegExp)) {
+    if (name !== '' && !regExp.checkRegExp(name, regExp.memberNameRegExp)) {
       setNameError('한글과 영문만 입력 가능합니다.')
     } else {
       setNameError('')
@@ -69,7 +69,7 @@ const Index = () => {
       setPhoneError('')
     }
 
-  }, [email, memberName, password, passwordCheck, phone])
+  }, [email, name, password, passwordCheck, phone])
 
   const changePwType = (type: string) => {
     if (type === 'password') {
@@ -82,7 +82,7 @@ const Index = () => {
     if (email == '') {
       setEmailError('이메일을 입력해주세요.')
       return
-    } else if (memberName == '') {
+    } else if (name == '') {
       setNameError('이름을 입력해주세요.')
       return
     } else if (password == '') {
@@ -110,7 +110,7 @@ const Index = () => {
             {emailError !== '' && <A.AlertText alertType='error'>{emailError}</A.AlertText>}
           </A.InputBox>
           <A.InputBox>
-            <A.Input type='text' placeholder='이름' name='memberName' value={memberName} onChange={handleInput} />
+            <A.Input type='text' placeholder='이름' name='memberName' value={name} onChange={handleInput} />
             {nameError !== '' && <A.AlertText alertType='error'>{nameError}</A.AlertText>}
           </A.InputBox>
           <A.InputBox>
@@ -134,7 +134,7 @@ const Index = () => {
             <A.Input type='text' placeholder={`휴대폰번호('-'제외)`} name='phone' value={phone} onChange={handleInput} maxLength={11} />
             {phoneError !== '' && <A.AlertText alertType='error'>{phoneError}</A.AlertText>}
           </A.InputBox>
-          <A.Input type='hidden' name='group' value={group} />
+          <A.Input type='hidden' name='group' value={groupString} />
         </A.SignSubWrap>
         <A.RedButton onClick={signup}>
           <A.RedButtonSpan>회원가입</A.RedButtonSpan>

@@ -1,50 +1,43 @@
-const SET_USER = 'user/SET_USER' as const
-const SET_SIGNUPSTATE = 'user/SET_SIGNUPSTATE' as const
-
-export type MainAction =
-    | ReturnType<typeof setUser>
-    | ReturnType<typeof setSignupState>
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface MainState {
     user: {
         email: string,
-        memberName: string,
+        name: string,
         password: string,
         phone: string,
-        group: string
+        groupString: string,
     },
     signupState: boolean
 }
 
-export const setUser = (user: MainState['user']) => ({ type: SET_USER, payload: user })
-export const setSignupState = (signupState: MainState['signupState']) => ({ type: SET_SIGNUPSTATE, payload: signupState })
-
-
 const initialState: MainState = {
     user: {
         email: '',
-        memberName: '',
+        name: '',
         password: '',
         phone: '',
-        group: ''
+        groupString: '',
     },
     signupState: false
 }
 
-const reducer = (state: MainState = initialState, action: MainAction) => {
-    switch (action.type) {
-        case SET_USER:
-            return {
-                ...state, user: action.payload
-            }
-        case SET_SIGNUPSTATE:
-            return {
-                ...state, signupState: action.payload
-            }
-
-
-        default: return state
+export const userSlice = createSlice({
+    name: 'user',
+    initialState,
+    reducers: {
+        setUser: (state, action: PayloadAction<MainState['user']>) => {
+            state.user = action.payload
+        },
+        setSignupState: (state, action: PayloadAction<MainState['signupState']>) => {
+            state.signupState = action.payload
+        }
     }
-}
+})
 
-export default reducer;
+export const {
+    setUser,
+    setSignupState,
+} = userSlice.actions
+
+export default userSlice.reducer;
