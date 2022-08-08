@@ -18,10 +18,10 @@ const Index = () => {
         router.push('/')
         dispatch(setUser({
             email: '',
-            memberName: '',
+            name: '',
             password: '',
             phone: '',
-            group: ''
+            groupString: ''
         }))
         dispatch(setSignupState(false))
     }
@@ -40,13 +40,13 @@ const Index = () => {
                     <A.CompleteGridTh>이메일주소</A.CompleteGridTh>
                     <A.CompleteGridTd>{user.email}</A.CompleteGridTd>
                     <A.CompleteGridTh>이름</A.CompleteGridTh>
-                    <A.CompleteGridTd>{user.memberName}</A.CompleteGridTd>
+                    <A.CompleteGridTd>{user.name}</A.CompleteGridTd>
                     <A.CompleteGridTh>휴대폰번호</A.CompleteGridTh>
                     <A.CompleteGridTd>{user.phone}</A.CompleteGridTd>
-                    {user.group !== null &&
+                    {user.groupString !== null &&
                         <>
                             <A.CompleteGridTh>소속</A.CompleteGridTh>
-                            <A.CompleteGridTd>{user.group}</A.CompleteGridTd>
+                            <A.CompleteGridTd>{user.groupString}</A.CompleteGridTd>
                         </>
                     }
                 </A.CompleteGrid>

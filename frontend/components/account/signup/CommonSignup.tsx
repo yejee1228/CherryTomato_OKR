@@ -14,7 +14,7 @@ const Index = () => {
   const dispatch = useDispatch()
   const user = useSelector((state: RootState) => state.user.user)
   const [inputs, setInputs] = useState(user);
-  const { email, memberName, password, phone, group } = inputs
+  const { email, name, password, phone, groupString } = inputs
   const [passwordCheck, setPasswordCheck] = useState('')
   const [passWordType, setPassWordType] = useState('password')
   const [passwordCheckType, setPasswordCheckType] = useState('password')
@@ -59,7 +59,7 @@ const Index = () => {
       setEmailError('')
     }
 
-    if (memberName !== '' && !regExp.checkRegExp(memberName, regExp.memberNameRegExp)) {
+    if (name !== '' && !regExp.checkRegExp(name, regExp.memberNameRegExp)) {
       setNameError('한글과 영문만 입력 가능합니다.')
     } else {
       setNameError('')
@@ -74,12 +74,12 @@ const Index = () => {
     }
 
     if (phone !== '' && !regExp.checkRegExp(phone, regExp.phoneRegExp)) {
-      setPhoneError('11자리 숫자로만 입력해주세요.')
+      setPhoneError('11자리 숫자로만 입력해주세요.') //핸드폰번호 입력 시 숫자만 넣도록 장치필요
     } else {
       setPhoneError('')
     }
 
-  }, [email, memberName, password, passwordCheck, phone])
+  }, [email, name, password, passwordCheck, phone])
 
   const changePwType = (type: string) => {
     if (type === 'password') {
@@ -95,7 +95,7 @@ const Index = () => {
       setEmailError('이메일을 입력해주세요.')
       return
       //리스트에 존재하지 않는 이메일입니다.
-    } else if (memberName === '') {
+    } else if (name === '') {
       setNameError('이름을 입력해주세요.')
       return
       //이메일과 이름이 일치하지 않습니다.
@@ -108,7 +108,7 @@ const Index = () => {
     } else if (phone === '') {
       setPhoneError('핸드폰번호를 입력해주세요.')
       return
-    } else if (group === '') {
+    } else if (groupString === '') {
       setGroupError('소속그룹을 선택해주세요.')
       return
     } else {
@@ -127,7 +127,7 @@ const Index = () => {
             {emailError !== '' && <A.AlertText alertType='error'>{emailError}</A.AlertText>}
           </A.InputBox>
           <A.InputBox>
-            <A.Input type='text' placeholder='이름' name='memberName' value={memberName} onChange={handleInput} />
+            <A.Input type='text' placeholder='이름' name='memberName' value={name} onChange={handleInput} />
             {nameError !== '' && <A.AlertText alertType='error'>{nameError}</A.AlertText>}
           </A.InputBox>
           <A.InputBox>
@@ -152,13 +152,10 @@ const Index = () => {
             {phoneError !== '' && <A.AlertText alertType='error'>{phoneError}</A.AlertText>}
           </A.InputBox>
           <A.InputBox>
-            <A.SelectBox placeholder={`소속을 선택해주세요`} name='group' value={group} onChange={handleSelect} >
+            <A.SelectBox placeholder={`소속을 선택해주세요`} name='group' value={groupString} onChange={handleSelect} >
               <option value=''>소속을 선택해주세요</option>
-              <option value='온라인교육팀'>온라인교육팀</option>
-              <option value='오프라인교육팀'>오프라인교육팀</option>
-              <option value='경영지원그룹'>경영지원그룹</option>
             </A.SelectBox>
-            {group === '' && <A.InfoIcon onMouseOver={() => setInfo(true)} onMouseLeave={() => setInfo(false)} />}
+            {groupString === '' && <A.InfoIcon onMouseOver={() => setInfo(true)} onMouseLeave={() => setInfo(false)} />}
             {info && <A.InfoLayer>추후 소속 변경은 관리자에게 문의해 주세요.</A.InfoLayer>}
             {groupError !== '' && <A.AlertText alertType='error'>{groupError}</A.AlertText>}
           </A.InputBox>
