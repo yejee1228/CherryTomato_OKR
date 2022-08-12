@@ -3,6 +3,10 @@ export type Header = {
     Accept: string,
     'Content-Type': string
 }
-export type Member = {
+export type User = {
+    email: string,
     name: string,
+    password: string,
+    phone: string,
+    groupString: string,
 }
