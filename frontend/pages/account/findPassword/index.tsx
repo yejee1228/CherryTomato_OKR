@@ -30,7 +30,7 @@ const Index = () => {
             return;
         }
 
-        axios.get(`http://localhost:8080/account/existid/` + email)
+        axios.post(`http://localhost:8080/member/id`,)
             .then((data) => {
                 if (!data.data) {
                     setAuthError(true)

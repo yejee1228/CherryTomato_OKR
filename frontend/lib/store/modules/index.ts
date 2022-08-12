@@ -2,10 +2,12 @@ import { $CombinedState, combineReducers } from "@reduxjs/toolkit";
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import user, { MainState } from './user.module';
+import user, { UserState } from './user.module';
+import company, { CompanyState } from './company.module'
 
 const reducer = combineReducers({
     user,
+    company,
 });
 
 const persistConfig = {
@@ -13,10 +15,8 @@ const persistConfig = {
     storage,
 }
 
-export type RootState = {
-    readonly [$CombinedState]?: undefined;
-} & {
-    user: MainState;
-}
+export type RootState = { readonly [$CombinedState]?: undefined; }
+    & { user: UserState; }
+    & { company: CompanyState; }
 
 export default persistReducer(persistConfig, reducer);

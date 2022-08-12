@@ -1,9 +1,15 @@
+import { Header, Navigator, MainWrap } from 'components/main'
+import * as M from 'lib/styles/mainStyles'
 
 const Main = () => {
     return (
-        <div>
-            Hello, CherryTomato!
-        </div>
+        <>
+            <Header />
+            <M.MainWrap >
+                <Navigator />
+                <MainWrap />
+            </M.MainWrap>
+        </>
     );
 };
 

@@ -1,3 +1,5 @@
 import Header from './Header'
+import Navigator from './Navigator'
+import MainWrap from './MainWrap'
 
-export { Header };
+export { Header, Navigator, MainWrap };

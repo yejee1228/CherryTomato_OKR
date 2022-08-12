@@ -9,10 +9,10 @@ import { useRouter } from 'next/router';
 const Index = () => {
   const router = useRouter()
   const [inputs, setInputs] = useState({
-    memberName: '',
+    name: '',
     phone: '',
   });
-  const { memberName, phone } = inputs;
+  const { name, phone } = inputs;
   /* const [authCode, setAuthcode] = useState('');
   const [transNum, setTransNum] = useState(false); */
   //const [phoneErrorMsg, setPhoneErrorMsg] = useState('가입 당시 입력한 휴대전화 번호을 입력하세요.');
@@ -100,7 +100,7 @@ const Index = () => {
     const config = {
       header: ''
     }
-    axios.post(`/member/id`, config)
+    axios.post(`/member/${name}`, config)
       .then((data) => {
         if (!data.data) {
           return false;
@@ -124,8 +124,8 @@ const Index = () => {
             <A.Input
               type='text'
               placeholder='성명'
-              name='memberName'
-              value={memberName}
+              name='name'
+              value={name}
               onChange={handleInput}
             />
           </A.InputBox>
