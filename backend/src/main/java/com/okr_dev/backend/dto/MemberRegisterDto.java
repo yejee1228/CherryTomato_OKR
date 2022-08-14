@@ -10,4 +10,5 @@ public class MemberRegisterDto {
     private String password;
     private String name;
     private String phone;
+    private String role;
 }
