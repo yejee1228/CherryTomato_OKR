@@ -1,8 +1,9 @@
 package com.okr_dev.backend.model;
 
-import com.okr_dev.backend.dto.MemberRegisterDto;
+import com.okr_dev.backend.dto.MemberDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Lazy;
 
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @Entity
+@Getter
 public class Member{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,9 +27,10 @@ public class Member{
     @Column private String name;
     @Column private String phone;
     @Column private String profileAttachkey;
+    @Column private String useYn;
     @Column private String role;
 
-    public Member(MemberRegisterDto requestDto) {
+    public Member(MemberDto.Admin.AdminMemberRegistRequest requestDto) {
         this.username = requestDto.getEmail();
         this.password = requestDto.getPassword();
         this.name = requestDto.getName();
